@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>בניית אתרים לעסקים קטנים בישראל | Nart (WebAlchemy) — אתרים, SEO ואוטומציות</title>
+  <meta
+    name="description"
+    content="Nart (WebAlchemy) בונה אתרים מודרניים בעברית (RTL) לעסקים קטנים: אתר תדמית/לידים, בסיס SEO חזק, מהירות, חוויית מובייל, וחיבור לאוטומציות. תהליך מסודר + שירות אישי וזמין."
+  />
+
+  <!-- Canonical (update to your real domain) -->
+  <link rel="canonical" href="https://your-domain.co.il/" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Language targeting -->
+  <link rel="alternate" href="https://your-domain.co.il/" hreflang="he-il" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Open Graph (WhatsApp/Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:title" content="בניית אתרים לעסקים קטנים בישראל | Nart (WebAlchemy)" />
+  <meta
+    property="og:description"
+    content="אתר מודרני בעברית + SEO בסיסי + תשתית לאוטומציות. תהליך מסודר, שירות אישי, ותוצאה נקייה שמביאה פניות."
+  />
+  <meta property="og:url" content="https://your-domain.co.il/" />
+  <meta property="og:image" content="https://your-domain.co.il/og.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="בניית אתרים לעסקים קטנים בישראל | Nart (WebAlchemy)" />
+  <meta
+    name="twitter:description"
+    content="אתרים בעברית (RTL), SEO בסיסי, וחיבור לאוטומציות — תהליך מסודר ושירות אישי."
+  />
+  <meta name="twitter:image" content="https://your-domain.co.il/og.jpg" />
+
+  <!-- Favicons (optional but recommended) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Font (Hebrew-friendly) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Heebo", "ui-sans-serif", "system-ui", "Arial", "sans-serif"],
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(15, 23, 42, 0.08)",
+            softer: "0 8px 24px rgba(15, 23, 42, 0.06)",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Nart (WebAlchemy)",
+      "url": "https://your-domain.co.il/",
+      "areaServed": "IL",
+      "inLanguage": "he-IL",
+      "description": "בניית אתרים לעסקים קטנים בעברית (RTL), תשתית SEO, ושילוב אוטומציות.",
+      "telephone": "+972-50-123-4567",
+      "email": "hello@example.com",
+      "sameAs": [],
+      "serviceType": ["בניית אתרים", "SEO בסיסי", "אוטומציות לעסקים"]
+    }
+  </script>
+</head>
+
+
+  <body class="font-sans text-slate-900 bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <!-- Subtle background accents -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-28 -right-24 h-96 w-96 rounded-full bg-indigo-200/35 blur-3xl"></div>
+      <div class="absolute top-1/3 -left-32 h-96 w-96 rounded-full bg-cyan-200/30 blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-rose-200/25 blur-3xl"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-slate-200/60">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex items-center justify-between py-4">
+          <a href="#top" class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white shadow-softer border border-slate-200">
+              <span class="text-sm font-extrabold tracking-tight">nm</span>
+            </span>
+            <div class="leading-tight">
+              <p class="text-sm font-bold">Nart madaji</p>
+              <p class="text-xs text-slate-600">תדמית • עיצוב • נראות יוקרתית</p>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm text-slate-700">
+            <a class="hover:text-slate-900 transition" href="#services">שירותים</a>
+            <a class="hover:text-slate-900 transition" href="#gallery">גלריה</a>
+            <a class="hover:text-slate-900 transition" href="#before-after">לפני/אחרי</a>
+            <a class="hover:text-slate-900 transition" href="#testimonials">המלצות</a>
+            <a class="hover:text-slate-900 transition" href="#contact">יצירת קשר</a>
+            <a class="hover:text-slate-900 transition" href="#process">תהליך</a>
+            <a
+              class="inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-4 py-2 font-semibold shadow-softer hover:bg-slate-800 transition"
+              href="#contact"
+            >
+              קבע/י שיחה
+            </a>
+          </nav>
+
+          <a
+            href="#contact"
+            class="md:hidden inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-4 py-2 text-sm font-semibold shadow-softer hover:bg-slate-800 transition"
+          >
+            יצירת קשר
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-16 pb-10 sm:pb-14">
+        <div class="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+          <!-- Hero background image + overlay -->
+          <div class="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=80"
+              alt="רקע יוקרתי של סביבת עבודה נקייה ומודרנית"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-l from-white/95 via-white/80 to-white/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>
+          </div>
+
+          <div class="relative p-6 sm:p-10 lg:p-12">
+            <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-medium text-slate-700 border border-slate-200">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                  סטנדרט יוקרתי • Mobile-first • RTL בעברית
+                </p>
+
+                <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+                 בונה אתרים שמביאים פניות לעסקים קטנים — בעברית, מהיר ונקי
+                </h1>
+
+                <p class="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed max-w-xl">
+                 אני <strong>נארת מדאג'י</strong> בונה אתרי תדמית ואתרי לידים עם בסיס SEO חזק, מהיר
+                 וחוויית מובייל מעולה עם הדגש על עיצוב אישי — בתהליך מסודר ושירות אישי לאורך כל הדרך.
+
+                </p>
+                <p class="mt-3 text-sm text-slate-600 max-w-xl">
+                 מתאים לעסקים קטנים: מסעדות, נותני שירות, קליניקות ועסקים מקומיים — עם WhatsApp, טלפון וטופס שמייצר פניות.
+                </p>
+
+
+                <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <!-- Primary CTA: WhatsApp -->
+                <a
+                href="https://wa.me/972509969920?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%90%D7%A8%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%90%D7%AA%D7%A8%20%D7%AA%D7%93%D7%9E%D7%99%D7%AA%2F%D7%9C%D7%99%D7%93%D7%99%D7%9D.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 text-white px-6 py-3 font-semibold shadow-softer hover:bg-slate-800 transition"
+                >
+                 דבר/י איתי בוואטסאפ
+                </a>
+
+                <!-- Secondary CTA -->
+                <a
+                  href="#gallery"
+                  class="inline-flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200 px-6 py-3 font-semibold text-slate-900 shadow-softer hover:bg-white transition"
+                  >
+                     לראות עבודות
+                  </a>
+                </div>
+
+<p class="mt-3 text-sm text-slate-600 max-w-xl">
+  מענה מהיר • בלי התחייבות • תהליך מסודר ושירות אישי
+</p>
+
+
+                <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <div class="rounded-2xl bg-white/70 border border-slate-200 p-4 shadow-softer">
+                    <p class="text-xs text-slate-600">גישה</p>
+                    <p class="mt-1 font-bold">נקי & ממיר</p>
+                  </div>
+                  <div class="rounded-2xl bg-white/70 border border-slate-200 p-4 shadow-softer">
+                    <p class="text-xs text-slate-600">תוצאה</p>
+                    <p class="mt-1 font-bold">נראות פרימיום</p>
+                  </div>
+                  <div class="rounded-2xl bg-white/70 border border-slate-200 p-4 shadow-softer col-span-2 sm:col-span-1">
+                    <p class="text-xs text-slate-600">מיקוד</p>
+                    <p class="mt-1 font-bold">SEO בעברית</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Side images (2) -->
+              <div class="grid gap-4 sm:grid-cols-2">
+                <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+                    alt="תמונה של עבודה מקצועית בסביבה מודרנית"
+                    class="h-56 sm:h-64 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <figcaption class="p-4">
+                    <p class="text-sm font-semibold">מראה נקי</p>
+                    <p class="mt-1 text-xs text-slate-600">הדגשה ויזואלית שמביאה אמון.</p>
+                  </figcaption>
+                </figure>
+
+                <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+                  <img
+                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                    alt="תמונה של צוות או לקוחות עם אווירה מקצועית"
+                    class="h-56 sm:h-64 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <figcaption class="p-4">
+                    <p class="text-sm font-semibold">מסר ברור</p>
+                    <p class="mt-1 text-xs text-slate-600">מבנה שמוביל לפעולה.</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+<section id="services" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="flex flex-col gap-3">
+    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+      בניית אתרים לעסקים קטנים — אתר תדמית/לידים, SEO וחוויית מובייל
+    </h2>
+
+    <p class="text-slate-700 max-w-3xl leading-relaxed">
+      אני בונה <strong>אתרי תדמית ואתרי לידים</strong> שמסבירים ברור מה העסק עושה ומובילים לפנייה.
+      כל אתר מגיע עם <strong>בסיס SEO מהיר</strong>, חוויית מובייל מעולה, ועיצוב אישי — בתהליך מסודר ושירות אישי לאורך כל הדרך.
+    </p>
+
+    <!-- little trust line -->
+    <div class="mt-2 flex flex-wrap gap-2 text-xs">
+      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">RTL בעברית</span>
+      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">טעינה מהירה</span>
+      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">נגישות בסיסית</span>
+      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">כפתורי WhatsApp/טלפון</span>
+    </div>
+  </div>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
+          <!-- icon -->
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-bold">אתר תדמית/לידים</h3>
+          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            מבנה ברור שמסביר מה אתה מציע, מציג תמונות, ומוביל לפנייה עם CTA חזק.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
+          <!-- icon -->
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 7l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17 7L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-bold">SEO בסיסי ומהיר</h3>
+          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            כותרות נכונות (H1/H2), תיאורים, מבנה נקי, וקישורים שמאפשרים לגוגל להבין את האתר.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
+          <!-- icon -->
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 7h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 10h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 14h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-bold">מובייל קודם</h3>
+          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            חוויית מובייל מעולה: טקסט קריא, כפתורים גדולים, וגלילה נעימה שמביאה המרות.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
+          <!-- icon -->
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 7l-8 8-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 21h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-bold">תהליך מסודר</h3>
+          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            איסוף חומרים → עיצוב → בנייה → בדיקות → עלייה לאוויר. אתה יודע תמיד מה השלב הבא.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="mt-8 flex flex-col sm:flex-row gap-3">
+    <a
+      href="#contact"
+      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-6 py-3 font-semibold shadow-softer hover:bg-slate-800 transition"
+    >
+      בוא נבנה אתר שמביא פניות
+    </a>
+    <a
+      href="#gallery"
+      class="inline-flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200 px-6 py-3 font-semibold text-slate-900 shadow-softer hover:bg-white transition"
+    >
+      לראות דוגמאות
+    </a>
+  </div>
+</section>
+
+      <!-- PROCESS -->
+<section id="process" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="flex flex-col gap-3">
+    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">איך זה עובד</h2>
+    <p class="text-slate-700 max-w-2xl leading-relaxed">
+      תהליך קצר, ברור ומסודר — כדי שתדע בדיוק מה קורה בכל שלב.
+    </p>
+  </div>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+      <p class="text-xs text-slate-600">שלב 1</p>
+      <h3 class="mt-1 font-bold">שיחה קצרה</h3>
+      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+        מה העסק עושה, מי הלקוחות, ומה המטרה: תדמית או לידים.
+      </p>
+    </div>
+
+    <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+      <p class="text-xs text-slate-600">שלב 2</p>
+      <h3 class="mt-1 font-bold">איסוף חומרים</h3>
+      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+        לוגו, טקסטים, תמונות ודוגמאות לאתרים שאהבת (אם יש).
+      </p>
+    </div>
+
+    <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+      <p class="text-xs text-slate-600">שלב 3</p>
+      <h3 class="mt-1 font-bold">עיצוב ובנייה</h3>
+      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+        עיצוב נקי + חוויית מובייל + חיבור לכפתורי יצירת קשר.
+      </p>
+    </div>
+
+    <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+      <p class="text-xs text-slate-600">שלב 4</p>
+      <h3 class="mt-1 font-bold">בדיקות ועלייה לאוויר</h3>
+      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+        בדיקת מהירות, טקסטים, קישורים, ואז העלאה + הדרכה קצרה.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+     <!-- PORTFOLIO (3–4 projects, web design focused) -->
+<section id="portfolio" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="flex flex-col gap-3">
+    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">תיק עבודות</h2>
+    <p class="text-slate-700 max-w-2xl leading-relaxed">
+      כמה דוגמאות לאתרים שבניתי — דגש על מהירות, היררכיה ברורה והתאמה למובייל.
+      <span class="font-semibold">החלף את התמונות לצילומי מסך אמיתיים</span> כדי שזה יעבוד הכי חזק.
+    </p>
+  </div>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Project 1 -->
+    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+      <!-- Add image here: screenshot / mockup of a real website -->
+      <img
+        src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=80"
+        alt="תיק עבודות: אתר תדמית לעסק קטן — דוגמה"
+        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
+        loading="lazy"
+      />
+      <div class="p-4">
+        <p class="text-sm font-semibold">אתר תדמית לעסק מקומי</p>
+        <p class="mt-1 text-xs text-slate-600">דגש על מסר ברור, CTA בולט והתאמה מלאה למובייל.</p>
+      </div>
+    </a>
+
+    <!-- Project 2 -->
+    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+      <!-- Add image here: before/after or redesign screenshot -->
+      <img
+        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
+        alt="תיק עבודות: עמוד נחיתה ממיר — דוגמה"
+        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
+        loading="lazy"
+      />
+      <div class="p-4">
+        <p class="text-sm font-semibold">עמוד נחיתה ממיר</p>
+        <p class="mt-1 text-xs text-slate-600">מבנה: תועלות → הוכחות → שאלות → טופס פנייה.</p>
+      </div>
+    </a>
+
+    <!-- Project 3 -->
+    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+      <!-- Add image here: mobile-first UI screenshot -->
+      <img
+        src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80"
+        alt="תיק עבודות: עיצוב נקי ומודרני לאתר שירותים — דוגמה"
+        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
+        loading="lazy"
+      />
+      <div class="p-4">
+        <p class="text-sm font-semibold">שדרוג אתר קיים (Re-Design)</p>
+        <p class="mt-1 text-xs text-slate-600">שיפור היררכיה, קריאות ומהירות — בלי רעש מיותר.</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between rounded-3xl border border-slate-200 bg-white p-5">
+    <p class="text-sm text-slate-700">
+      רוצה לראות דוגמאות רלוונטיות לעסק שלך?
+      <span class="font-semibold">אגיש לך 2–3 כיוונים</span> לפני שמתחילים.
+    </p>
+    <a
+      href="#contact"
+      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+    >
+      דברו איתי
+    </a>
+  </div>
+</section>
+
+
+      <!-- BEFORE / AFTER – Mobile-First Process -->
+<section id="before-after" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="flex flex-col gap-3">
+    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">מובייל קודם — לפני / אחרי</h2>
+    <p class="text-slate-700 max-w-2xl leading-relaxed">
+      כך אני בונה אתרים: מתחילים ממסך מובייל (החשוב ביותר), ואז מרחיבים לדסקטופ.
+      זה מבטיח אתר ברור, מהיר ונוח — בדיוק איפה שהלקוחות שלך באמת נמצאים.
+    </p>
+  </div>
+
+  <div class="mt-8 grid gap-4 md:grid-cols-2">
+    <!-- BEFORE: Mobile wireframe / early build -->
+    <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+      <div class="p-4 pb-0 flex items-center justify-between gap-3">
+        <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+          שלב 1 — מובייל (בסיס)
+        </span>
+        <span class="text-xs text-slate-500">Mobile-first</span>
+      </div>
+
+      <!-- Add image here: your mobile screenshot (early build / mobile layout) -->
+      <img
+        src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?auto=format&fit=crop&w=1800&q=80"
+        alt="שלב 1: מבנה מובייל נקי וברור — דוגמה"
+        class="h-64 sm:h-80 w-full object-cover"
+        loading="lazy"
+      />
+
+      <figcaption class="p-4">
+        <p class="text-sm text-slate-600">
+          בונים היררכיה, טיפוגרפיה ו-CTA למסך קטן — כדי שהכל יהיה ברור ומהיר.
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- AFTER: Desktop polished -->
+    <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
+      <div class="p-4 pb-0 flex items-center justify-between gap-3">
+        <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+          שלב 2 — דסקטופ (הרחבה)
+        </span>
+        <span class="text-xs text-slate-500">Responsive</span>
+      </div>
+
+      <!-- Add image here: your desktop screenshot (final / desktop layout) -->
+      <img
+        src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1800&q=80"
+        alt="שלב 2: גרסת דסקטופ מסודרת ומלאה — דוגמה"
+        class="h-64 sm:h-80 w-full object-cover"
+        loading="lazy"
+      />
+
+      <figcaption class="p-4">
+        <p class="text-sm text-slate-600">
+          אחרי שהמובייל מושלם — מרחיבים לגריד דסקטופ, מוסיפים תוכן ותמונות בלי לפגוע במהירות.
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="mt-6 grid gap-3 sm:grid-cols-3">
+    <div class="rounded-3xl border border-slate-200 bg-white p-5">
+      <p class="text-sm font-semibold">יותר פניות</p>
+      <p class="mt-1 text-sm text-slate-600">CTA ברור ונגיש באגודל — בדיוק איפה שלוחצים.</p>
+    </div>
+    <div class="rounded-3xl border border-slate-200 bg-white p-5">
+      <p class="text-sm font-semibold">מהירות גבוהה</p>
+      <p class="mt-1 text-sm text-slate-600">מבנה נקי קודם, ואז מוסיפים “שכבות” בצורה חכמה.</p>
+    </div>
+    <div class="rounded-3xl border border-slate-200 bg-white p-5">
+      <p class="text-sm font-semibold">חוויית משתמש</p>
+      <p class="mt-1 text-sm text-slate-600">הטקסט קריא, הכפתורים בגודל נכון, והמסר ברור.</p>
+    </div>
+  </div>
+
+  <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between rounded-3xl border border-slate-200 bg-white p-5">
+    <p class="text-sm text-slate-700">
+      רוצה שאבנה לך אתר שמרגיש מעולה במובייל ומביא פניות?
+    </p>
+    <a
+      href="#contact"
+      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+    >
+      בוא נתחיל
+    </a>
+  </div>
+</section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+        <div class="flex flex-col gap-3">
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">המלצות</h2>
+          <p class="text-slate-700 max-w-2xl leading-relaxed">
+            שלוש המלצות קצרות שבונות אמון. החלף/י לשמות אמיתיים כשיהיו.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-slate-900 text-white inline-flex items-center justify-center font-bold">א</div>
+              <div>
+                <p class="font-bold">[שם לקוח/ה]</p>
+                <p class="text-xs text-slate-600">בעל/ת עסק</p>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “תהליך סופר מסודר ותוצאה שנראית ברמה גבוהה. האתר נקי, מהיר ומעביר בדיוק את המסר.”
+            </p>
+          </article>
+
+          <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-slate-900 text-white inline-flex items-center justify-center font-bold">ד</div>
+              <div>
+                <p class="font-bold">[שם לקוח/ה]</p>
+                <p class="text-xs text-slate-600">עצמאי/ת</p>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “קיבלתי אתר תדמית יוקרתי עם הרבה מקום לתמונות, והכל עובד מעולה במובייל. מומלץ!”
+            </p>
+          </article>
+
+          <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-slate-900 text-white inline-flex items-center justify-center font-bold">מ</div>
+              <div>
+                <p class="font-bold">[שם לקוח/ה]</p>
+                <p class="text-xs text-slate-600">מותג</p>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “העיצוב נקי ומודרני, הכרטיסים יושבים יפה והכל מרגיש פרימיום. בדיוק מה שחיפשנו.”
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- STRONG CTA (dark) -->
+      <section class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+        <div class="rounded-[2rem] bg-slate-950 text-white overflow-hidden shadow-soft">
+          <div class="relative">
+            <div class="absolute inset-0 opacity-35">
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80"
+                alt="רקע כהה של סביבה מקצועית לקריאה לפעולה"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-l from-slate-950 via-slate-950/80 to-slate-950/40"></div>
+
+            <div class="relative p-8 sm:p-12">
+              <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+                <div>
+                  <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">בוא/י נבנה נראות שמוכרת</h2>
+                  <p class="mt-3 text-slate-200 leading-relaxed max-w-2xl">
+                    רוצה אתר תדמית יוקרתי בעברית עם מקום לתמונות? דבר/י איתי ואחזור אליך עם כיוון ברור ותמחור.
+                  </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 lg:justify-end">
+                  <a
+                    href="#contact"
+                    class="inline-flex items-center justify-center rounded-2xl bg-white text-slate-950 px-6 py-3 font-semibold shadow-softer hover:bg-slate-100 transition"
+                  >
+                    דברו איתי עכשיו
+                  </a>
+                  <a
+                    href="#gallery"
+                    class="inline-flex items-center justify-center rounded-2xl bg-white/10 border border-white/15 px-6 py-3 font-semibold text-white hover:bg-white/15 transition"
+                  >
+                    לראות גלריה
+                  </a>
+                </div>
+              </div>
+
+              <div class="mt-10 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
+                  <p class="text-xs text-slate-200">זמן תגובה</p>
+                  <p class="mt-1 font-bold">מהיר</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
+                  <p class="text-xs text-slate-200">סגנון</p>
+                  <p class="mt-1 font-bold">פרימיום</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
+                  <p class="text-xs text-slate-200">התאמה</p>
+                  <p class="mt-1 font-bold">RTL + מובייל</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
+        <div class="rounded-[2rem] bg-white border border-slate-200 shadow-soft p-6 sm:p-10">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">יצירת קשר</h2>
+              <p class="mt-3 text-slate-700 leading-relaxed max-w-xl">
+                שלחו הודעה בוואטסאפ, התקשרו, או כתבו באימייל — ונחזור אליכם בהקדם.
+              </p>
+
+              <div class="mt-6 grid gap-3">
+                <!-- WhatsApp -->
+                <a
+                  href="https://wa.me/972501234567"
+                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+                  aria-label="שליחת הודעת וואטסאפ"
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white">
+                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 11.5A8.5 8.5 0 1 1 8.1 3.4 8.5 8.5 0 0 1 20 11.5Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M7 19l.7-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M9.3 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3 0 .5-.1.7l-.4.4c-.1.1-.1.3 0 .5.6 1.2 1.6 2.1 2.8 2.6.2.1.4.1.5 0l.5-.5c.2-.2.4-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6-.6.4-1.7.6-3.2 0-1.7-.7-3.8-2.5-4.9-4.8-1-2.1-.4-3.1 0-3.6Z" fill="currentColor" opacity=".9"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <p class="font-bold">WhatsApp</p>
+                      <p class="text-sm text-slate-600">שליחת הודעה מהירה</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+                </a>
+
+                <!-- Phone -->
+                <a
+                  href="tel:+972509969920"
+                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+                  aria-label="שיחת טלפון"
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
+                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7.5 3h2c.4 0 .8.3.9.7l.7 2.8c.1.4 0 .8-.3 1.1l-1 1a14 14 0 0 0 6 6l1-1c.3-.3.7-.4 1.1-.3l2.8.7c.4.1.7.5.7.9v2c0 .5-.4 1-1 1C10 20.8 3.2 14 3 4c0-.6.5-1 1-1h3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <p class="font-bold">טלפון</p>
+                      <p class="text-sm text-slate-600">+972-50-996-9920</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+                </a>
+
+                <!-- Email -->
+                <a
+                  href="mailto:hello@example.com"
+                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+                  aria-label="שליחת אימייל"
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white">
+                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M6 8l6 5 6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <p class="font-bold">אימייל</p>
+                      <p class="text-sm text-slate-600">[hello@example.com]</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact side card -->
+            <aside class="rounded-3xl bg-slate-50 border border-slate-200 p-6 shadow-softer">
+              <h3 class="text-lg font-bold">מה כדאי לשלוח לי?</h3>
+              <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                כדי שאחזיר תשובה מדויקת ומהירה, אפשר לצרף:
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-700">
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+                  תחום השירות/העסק שלך
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+                  מטרת האתר (לידים / תדמית / פורטפוליו)
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+                  6–10 תמונות איכותיות (אם יש)
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+                  דוגמאות לאתרים שאהבת
+                </li>
+              </ul>
+
+              <div class="mt-6 rounded-2xl bg-white border border-slate-200 p-5 shadow-softer">
+                <p class="text-xs text-slate-600">הערה</p>
+                <p class="mt-1 text-sm text-slate-700 leading-relaxed">
+                  החלף/י את ה־<strong>[פרטים בסוגריים]</strong> בפרטים האמיתיים שלך, ואת התמונות — לתמונות שלך.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/60 bg-white/60">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+          <p class="text-sm text-slate-700">
+            © <span class="font-bold">[השם שלך]</span> • כל הזכויות שמורות
+          </p>
+          <p class="text-xs text-slate-600">
+            HTML אחד • Tailwind CDN • RTL בעברית • עיצוב יוקרתי ונקי
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

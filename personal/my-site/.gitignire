@@ -1,0 +1,29 @@
+# =========================
+# Local backups / temp files
+# =========================
+backup-index.html
+backup-*.html
+
+# =========================
+# Documents (prompts, notes)
+# =========================
+*.docx
+*.pdf
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode/
+
+# =========================
+# Folders outside site scope
+# =========================
+production/
+Rami_Levy/
+

@@ -19,9 +19,25 @@
 
   <style>
     :root {
-      --color-primary: #1e293b;
-      --color-secondary: #64748b;
-      --color-accent: #d4af37;
+      --color-bg: #EAF6FD;
+      
+      --color-primary: #0F172A;
+      --color-secondary: #475569;
+
+      --color-border: #E2E8F0;
+
+      --color-accent: #0693e3;
+      --color-accent-soft: #8ed1fc;
+
+      --color-surface: #EBF6FD;
+      --color-bg-muted: #DCE7EE;
+      --color-text: var(--color-primary);
+      --color-text-muted: var(--color-secondary);
+      --color-text-inverse: #FFFFFF;
+      --color-link: var(--color-accent);
+      --color-focus-ring: rgba(37, 99, 235, 0.45);
+      --color-accent-hover: #225BD8;
+      --color-border-strong: #CBD1D8;
     }
     summary::-webkit-details-marker { display: none; }
   </style>
@@ -60,7 +76,7 @@
   <!-- Header -->
   <header id="siteHeader" class="relative z-50 border-b border-white/10 bg-[var(--color-primary)] text-white">
     <!-- Single spacer (FIX: removed duplicate id) -->
-    <div id="headerSpacer" class="h-16"></div>
+    <div id="headerSpacer" class="h-4"></div>
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between gap-4">
@@ -542,55 +558,217 @@
       </div>
     </section>
 
-    <!-- PROCESS (NEW) -->
-    <section id="process" class="py-12 md:py-20 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- PROCESS (Infographic, no JS) -->
+<style>
+  /* motion-safe only */
+  @media (prefers-reduced-motion: no-preference) {
+    .floaty { animation: floaty 4.5s ease-in-out infinite; }
+    .floaty2 { animation: floaty 5.5s ease-in-out infinite; }
+    .pulseRing { animation: pulseRing 2.8s ease-out infinite; }
+    .shine { background-size: 200% 100%; animation: shine 3.2s linear infinite; }
+  }
+  @keyframes floaty { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-6px)} }
+  @keyframes floaty2 { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-10px)} }
+  @keyframes pulseRing { 0%{ transform: scale(1); opacity:.55 } 70%{ transform: scale(1.25); opacity:0 } 100%{ opacity:0 } }
+  @keyframes shine { 0%{ background-position: 0% 0 } 100%{ background-position: 100% 0 } }
+
+  /* Radio -> expand selected card (no JS) */
+  .stepRadio { position: absolute; opacity: 0; pointer-events: none; }
+  .stepCard { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .stepCard:hover { transform: translateY(-3px); }
+  .stepCard:focus-within { outline: none; }
+  .stepBody { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+
+  /* selected state */
+  #p1:checked ~ .grid .c1,
+  #p2:checked ~ .grid .c2,
+  #p3:checked ~ .grid .c3,
+  #p4:checked ~ .grid .c4 {
+    border-color: rgba(212,175,55,.55);
+    box-shadow: 0 16px 40px rgba(2,6,23,.10);
+    transform: translateY(-4px);
+  }
+  #p1:checked ~ .grid .c1 .stepBody,
+  #p2:checked ~ .grid .c2 .stepBody,
+  #p3:checked ~ .grid .c3 .stepBody,
+  #p4:checked ~ .grid .c4 .stepBody {
+    max-height: 220px;
+  }
+
+  /* animated infographic line */
+  .track {
+    background: linear-gradient(90deg,
+      rgba(30,41,59,.18),
+      rgba(212,175,55,.35),
+      rgba(30,41,59,.18)
+    );
+  }
+</style>
+
+<section id="process" class="py-12 md:py-20 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
         <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">תהליך עבודה</h2>
         <p class="mt-3 text-slate-700 max-w-2xl">
           תהליך ברור ומסודר שמאפשר להתקדם בצורה מקצועית — משלב הפנייה ועד התקדמות הפרויקט.
         </p>
+      </div>
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="text-sm font-semibold text-slate-900">שלב 1</div>
-            <div class="mt-2 font-semibold text-[var(--color-primary)]">פנייה והבנת צורך</div>
-            <div class="mt-2 text-sm text-slate-700">שיחה קצרה והגדרה מדויקת של מטרת הבדיקה/התכנון.</div>
-          </div>
-          <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="text-sm font-semibold text-slate-900">שלב 2</div>
-            <div class="mt-2 font-semibold text-[var(--color-primary)]">איסוף נתונים</div>
-            <div class="mt-2 text-sm text-slate-700">בחינת תכניות קיימות/מידע רלוונטי לפי הצורך.</div>
-          </div>
-          <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="text-sm font-semibold text-slate-900">שלב 3</div>
-            <div class="mt-2 font-semibold text-[var(--color-primary)]">תכנון / אישורים</div>
-            <div class="mt-2 text-sm text-slate-700">תכנון קונסטרוקציה/אישור הנדסי בהתאם לדרישות הפרויקט.</div>
-          </div>
-          <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="text-sm font-semibold text-slate-900">שלב 4</div>
-            <div class="mt-2 font-semibold text-[var(--color-primary)]">ליווי ומענה</div>
-            <div class="mt-2 text-sm text-slate-700">תקשורת ברורה ומענה מקצועי לאורך ההתקדמות.</div>
-          </div>
-        </div>
+      <a href="#contact"
+         class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+        להתחלת תהליך
+      </a>
+    </div>
 
-        <div class="mt-10">
-          <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <div class="text-lg font-semibold text-slate-900">רוצים להתחיל?</div>
-              <div class="mt-1 text-slate-700">השאירו פרטים או התקשרו — ונחזור אליכם בהקדם.</div>
-            </div>
-            <div class="flex flex-wrap gap-3">
-              <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
-                צרו קשר
-              </a>
-              <a href="tel:046510997" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-300 text-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
-                התקשרו עכשיו
-              </a>
-            </div>
-          </div>
+    <!-- no-JS selection -->
+    <div class="relative mt-10">
+      <input class="stepRadio" type="radio" name="proc" id="p1" checked>
+      <input class="stepRadio" type="radio" name="proc" id="p2">
+      <input class="stepRadio" type="radio" name="proc" id="p3">
+      <input class="stepRadio" type="radio" name="proc" id="p4">
+
+      <!-- Infographic track (desktop) -->
+      <div class="hidden lg:block relative mb-8">
+        <div class="h-2 rounded-full track shine"></div>
+
+        <!-- nodes -->
+        <div class="absolute -top-5 right-0 flex items-center gap-0 w-full justify-between px-1">
+          <!-- Node 1 -->
+          <label for="p1" class="group cursor-pointer">
+            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty">
+              <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
+              <span class="text-sm font-semibold text-[var(--color-primary)]">01</span>
+            </span>
+            <span class="block mt-2 text-xs text-slate-600 group-hover:text-slate-900">פנייה</span>
+          </label>
+
+          <!-- Node 2 -->
+          <label for="p2" class="group cursor-pointer">
+            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty2">
+              <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
+              <span class="text-sm font-semibold text-[var(--color-primary)]">02</span>
+            </span>
+            <span class="block mt-2 text-xs text-slate-600 group-hover:text-slate-900">איסוף נתונים</span>
+          </label>
+
+          <!-- Node 3 -->
+          <label for="p3" class="group cursor-pointer">
+            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty">
+              <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
+              <span class="text-sm font-semibold text-[var(--color-primary)]">03</span>
+            </span>
+            <span class="block mt-2 text-xs text-slate-600 group-hover:text-slate-900">תכנון/אישור</span>
+          </label>
+
+          <!-- Node 4 -->
+          <label for="p4" class="group cursor-pointer">
+            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty2">
+              <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
+              <span class="text-sm font-semibold text-[var(--color-primary)]">04</span>
+            </span>
+            <span class="block mt-2 text-xs text-slate-600 group-hover:text-slate-900">ליווי</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <!-- Cards (act as infographic content) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <label for="p1" class="c1 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs text-slate-500">שלב 1</div>
+              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">פנייה והבנת צורך</h3>
+            </div>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200">
+              <span class="text-sm font-semibold text-slate-900">01</span>
+            </span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            שיחה קצרה והגדרה מדויקת של מטרת הבדיקה/התכנון.
+          </p>
+          <div class="stepBody mt-4 pt-4 border-t border-slate-100">
+            <ul class="text-sm text-slate-700 space-y-2">
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>סוג הפרויקט (בנייה חדשה / מבנה קיים / תוספת).</span></li>
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>אזור/עיר וזמינות לביקור (אם נדרש).</span></li>
+            </ul>
+          </div>
+          <div class="mt-4 text-xs text-slate-500">לחצו כדי לבחור / לפתוח</div>
+        </label>
+
+        <!-- Card 2 -->
+        <label for="p2" class="c2 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs text-slate-500">שלב 2</div>
+              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">איסוף נתונים</h3>
+            </div>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200">
+              <span class="text-sm font-semibold text-slate-900">02</span>
+            </span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            בחינת תכניות קיימות/מידע רלוונטי לפי הצורך.
+          </p>
+          <div class="stepBody mt-4 pt-4 border-t border-slate-100">
+            <ul class="text-sm text-slate-700 space-y-2">
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>תכניות, מדידות או מידע קיים (אם יש).</span></li>
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הגדרת אילוצים ויעדים לתכנון.</span></li>
+            </ul>
+          </div>
+          <div class="mt-4 text-xs text-slate-500">לחצו כדי לבחור / לפתוח</div>
+        </label>
+
+        <!-- Card 3 -->
+        <label for="p3" class="c3 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs text-slate-500">שלב 3</div>
+              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">תכנון / אישורים</h3>
+            </div>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200">
+              <span class="text-sm font-semibold text-slate-900">03</span>
+            </span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            תכנון קונסטרוקציה/אישור הנדסי בהתאם לדרישות הפרויקט.
+          </p>
+          <div class="stepBody mt-4 pt-4 border-t border-slate-100">
+            <ul class="text-sm text-slate-700 space-y-2">
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הכנת פתרון הנדסי ותיעוד מסודר.</span></li>
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>התאמה לצורך הפרויקט (ממ״ד/מבנה קיים/תוספת).</span></li>
+            </ul>
+          </div>
+          <div class="mt-4 text-xs text-slate-500">לחצו כדי לבחור / לפתוח</div>
+        </label>
+
+        <!-- Card 4 -->
+        <label for="p4" class="c4 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs text-slate-500">שלב 4</div>
+              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">ליווי ומענה</h3>
+            </div>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200">
+              <span class="text-sm font-semibold text-slate-900">04</span>
+            </span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            תקשורת ברורה ומענה מקצועי לאורך ההתקדמות.
+          </p>
+          <div class="stepBody mt-4 pt-4 border-t border-slate-100">
+            <ul class="text-sm text-slate-700 space-y-2">
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>מענה מקצועי לפי צורך הפרויקט.</span></li>
+              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>פתרונות בזמן אמת במידת הצורך.</span></li>
+            </ul>
+          </div>
+          <div class="mt-4 text-xs text-slate-500">לחצו כדי לבחור / לפתוח</div>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- QUICK LEAD (NEW) -->
     <section id="quickLead" class="py-12 md:py-20">

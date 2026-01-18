@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="he" dir="rtl" class="overflow-x-hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניצב הנדסה | תכנון קונסטרוקציה וייעוץ הנדסי</title>
+  <meta name="description" content="ניצב הנדסה מתמחה בתכנון קונסטרוקציה, אישורים הנדסיים וייעוץ לבנייה חדשה ותוספות בנייה בחיפה, הקריות ומרכז הארץ.">
+  <meta property="og:title" content="ניצב הנדסה – תכנון קונסטרוקציה וייעוץ הנדסי">
+  <meta property="og:description" content="תכנון קונסטרוקציות, אישורים הנדסיים וייעוץ מקצועי לפרויקטים של בנייה חדשה ותוספות בנייה בצפון ובמרכז.">
+  <meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-primary: #1e293b;
+      --color-secondary: #64748b;
+      --color-accent: #d4af37;
+    }
+    summary::-webkit-details-marker { display: none; }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "ניצב הנדסה",
+      "description": "ניצב הנדסה היא חברת תכנון וייעוץ הנדסי המתמחה בתכנון קונסטרוקציות מבטון מזוין ופלדה, אישורים הנדסיים ופתרונות הנדסיים לפרויקטים מגוונים.\nאנו מלווים לקוחות פרטיים, יזמים ואנשי מקצוע משלב התכנון ועד לגמר השלד, תוך הקפדה על דיוק, זמינות ויחס אישי.",
+      "telephone": "046510997",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "כרמיאל" ,
+        "addressCountry": "IL"
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-slate-900 overflow-x-hidden">
+  <div id="top"></div>
+
+  <header id="siteHeader" class="relative z-50 border-b border-white/10 bg-[var(--color-primary)] text-white">
+    <div id="headerSpacer" class="h-16"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-16 flex items-center justify-between gap-4">
+      <a href="#top" class="whitespace-nowrap font-semibold text-lg text-white">
+        ניצב הנדסה
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-2 text-sm">
+        <a href="#top" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
+          דף הבית
+        </a>
+        <a href="#about" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
+          אודות
+        </a>
+        <a href="#services" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
+          שירותים
+        </a>
+        <a href="#gallery" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
+          גלריה
+        </a>
+        <a href="#faq" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
+          שאלות נפוצות
+        </a>
+        <a href="#contact" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white text-[var(--color-primary)] hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/70">
+          צור קשר
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger (drawer) — unchanged logic for now -->
+      <button
+        type="button"
+        id="mobileMenuBtn"
+        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/25 bg-white/10 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/70"
+        aria-label="פתח תפריט"
+        aria-expanded="false"
+        aria-controls="mobileMenuOverlay"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+    
+
+<div id="headerSpacer" class="h-16"></div>
+
+
+<script defer>
+(function () {
+  var header = document.getElementById('siteHeader');
+  var spacer = document.getElementById('headerSpacer');
+  if (!header) return;
+
+  // Always fixed so the menu is available when shown
+  header.classList.add(
+    'fixed', 'top-0', 'left-0', 'right-0',
+    'transition-transform', 'duration-200', 'ease-out',
+    'will-change-transform'
+  );
+
+  // Reserve space so content doesn't jump (CLS fix related to header becoming fixed)
+  // Deterministic height: matches your header row (h-16).
+  if (spacer) spacer.classList.add('h-16');
+
+  // Initial visible state
+  header.classList.remove('-translate-y-full');
+  header.classList.add('translate-y-0');
+
+  var lastY = window.scrollY || 0;
+  var accumUp = 0;
+
+  var SHOW_AFTER_UP = 36;    // scroll up this many px to show
+  var HIDE_AFTER_DOWN = 24;  // scroll down this many px to hide (needs a real move)
+  var ALWAYS_SHOW_TOP = 24;  // near top always show
+
+  function showHeader() {
+    header.classList.remove('-translate-y-full');
+    header.classList.add('translate-y-0');
+  }
+
+  function hideHeader() {
+    header.classList.remove('translate-y-0');
+    header.classList.add('-translate-y-full');
+  }
+
+  // Throttle scroll work to animation frames (reduce long main-thread tasks)
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+
+      var y = window.scrollY || 0;
+
+      // Always show close to top
+      if (y <= ALWAYS_SHOW_TOP) {
+        accumUp = 0;
+        showHeader();
+        lastY = y;
+        return;
+      }
+
+      var dy = y - lastY;
+
+      // Scrolling down
+      if (dy > 0) {
+        accumUp = 0;
+        if (dy >= HIDE_AFTER_DOWN) hideHeader();
+        lastY = y;
+        return;
+      }
+
+      // Scrolling up
+      if (dy < 0) {
+        accumUp += (-dy);
+        if (accumUp >= SHOW_AFTER_UP) {
+          showHeader();
+          accumUp = 0;
+        }
+        lastY = y;
+        return;
+      }
+
+      lastY = y;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+    </div>
+  </div>
+</header>
+
+  <main>
+    <section class="py-12 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-3xl md:text-5xl font-semibold leading-tight text-[var(--color-primary)]">
+              ניצב הנדסה – תכנון קונסטרוקציה וייעוץ הנדסי
+            </h1>
+            <p class="mt-5 text-base md:text-lg text-slate-700">
+              תכנון מדויק, ליווי מקצועי ואישורים הנדסיים לפרויקטים בבנייה חדשה ובמבנים קיימים
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+                צרו קשר
+              </a>
+              <a href="tel:046510997" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-300 text-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+                התקשרו עכשיו
+              </a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+              <img src="https://placehold.co/800x600" alt="תמונה להמחשה" class="w-full h-auto">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-12 md:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">אודות</h2>
+        <div class="mt-6 max-w-3xl">
+          <p class="text-slate-700 leading-relaxed whitespace-pre-line">
+ניצב הנדסה היא חברת תכנון וייעוץ הנדסי המתמחה בתכנון קונסטרוקציות מבטון מזוין ופלדה, אישורים הנדסיים ופתרונות הנדסיים לפרויקטים מגוונים.
+אנו מלווים לקוחות פרטיים, יזמים ואנשי מקצוע משלב התכנון ועד לגמר השלד, תוך הקפדה על דיוק, זמינות ויחס אישי.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-12 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">שירותים</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">תכנון קונסטרוקציות מבטון מזוין ופלדה</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">תכנון שלד מקצועי ומדויק למבני מגורים, מסחר ותעשייה.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">אישורים הנדסיים למבנים קיימים</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">מתן אישורים הנדסיים לשינויים, חיזוקים והתאמות במבנים קיימים.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">אישורים לתוספות בנייה וממ״דים</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">אישורים הנדסיים לתוספות בנייה, הרחבות ותוספת ממ״ד בהתאם לדרישות.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">אישור מהנדס לפרגולות ובריכות</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">אישורים הנדסיים לפרגולות, בריכות ותוספות חוץ.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">ייעוץ הנדסי לפרויקטים</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">ייעוץ מקצועי לבנייה חדשה, תוספות בנייה ופרויקטים מיוחדים.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white">
+            <h3 class="font-semibold text-slate-900">פתרונות בזמן אמת לבעיות הנדסיות</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">מענה מקצועי ומהיר לבעיות המתגלות בתכנון או בשטח.</p>
+          </div>
+          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white md:col-span-2 lg:col-span-1">
+            <h3 class="font-semibold text-slate-900">ייעוץ מיגון לממ״דים</h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">ייעוץ מיגון בהתאם לדרישות פיקוד העורף.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-12 md:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">גלריה</h2>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
+            <img src="https://placehold.co/800x600" alt="תמונה להמחשה" loading="lazy" class="w-full h-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-12 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">שאלות נפוצות</h2>
+        <div class="mt-8 max-w-3xl space-y-4">
+          <details class="group rounded-lg border border-slate-200 bg-white shadow-sm p-5">
+            <summary class="cursor-pointer font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-md">
+              האם אתם נותנים שירות גם למבנים קיימים?
+            </summary>
+            <p class="mt-3 text-slate-700 leading-relaxed">כן, אנו מספקים אישורים הנדסיים ופתרונות למבנים קיימים ולשינויים בהם.</p>
+          </details>
+
+          <details class="group rounded-lg border border-slate-200 bg-white shadow-sm p-5">
+            <summary class="cursor-pointer font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-md">
+              האם ניתן לקבל ייעוץ גם במהלך העבודה בשטח?
+            </summary>
+            <p class="mt-3 text-slate-700 leading-relaxed">כן, אנו מספקים ייעוץ ופתרונות בזמן אמת גם בשטח.</p>
+          </details>
+
+          <details class="group rounded-lg border border-slate-200 bg-white shadow-sm p-5">
+            <summary class="cursor-pointer font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-md">
+              באילו אזורים אתם פועלים?
+            </summary>
+            <p class="mt-3 text-slate-700 leading-relaxed">חיפה, הקריות ובעיקר אזור הצפון, וכן מרכז הארץ.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-12 md:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)]">צור קשר</h2>
+        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <p class="text-slate-700 leading-relaxed">השאירו פרטים ונחזור אליכם בהקדם.</p>
+
+            <div class="mt-6 space-y-3">
+              <a href="tel:046510997" class="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+                התקשרו עכשיו
+              </a>
+              <a href="mailto:Nitzav.eng@gmail.com" class="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 rounded-lg border border-slate-300 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+                שלחו אימייל
+              </a>
+            </div>
+
+            <div class="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <div class="text-sm text-slate-700">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-semibold text-slate-900">טלפון</span>
+                  <span class="text-slate-500">—</span>
+                  <a href="tel:046510997" class="underline decoration-slate-300 hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-sm">046510997</a>
+                </div>
+                <div class="mt-2 flex flex-wrap items-center gap-2">
+                  <span class="font-semibold text-slate-900">אימייל</span>
+                  <span class="text-slate-500">—</span>
+                  <a href="mailto:Nitzav.eng@gmail.com" class="underline decoration-slate-300 hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-sm">Nitzav.eng@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-white shadow-sm p-6">
+            <form class="space-y-4" action="#" method="post">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-2">שם מלא</label>
+                <input type="text" id="name" name="name" required placeholder="הקלידו כאן…"
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-medium mb-2">טלפון</label>
+                <input type="tel" id="phone" name="phone" required placeholder="הקלידו כאן…"
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2">אימייל</label>
+                <input type="email" id="email" name="email" placeholder="הקלידו כאן…"
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2">הודעה</label>
+                <textarea id="message" name="message" rows="4" placeholder="הקלידו כאן…"
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"></textarea>
+              </div>
+
+              <button type="submit" class="w-full px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]">
+                שלח הודעה
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-sm text-slate-700">
+        <span>כל הזכויות שמורות</span>
+        <span>ניצב הנדסה</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

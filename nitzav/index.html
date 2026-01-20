@@ -176,6 +176,86 @@
     .ui-stack > * + *{
       margin-top: 0.75rem;
     }
+
+    /* =========================
+   LOBBY (Hero replacement)
+   ========================= */
+.lobby{
+  min-height: 100vh;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #0B1220; /* fallback אם אין תמונה */
+}
+
+.lobby-media{
+  position: absolute;
+  inset: 0;
+}
+
+.lobby-media img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+.lobby-photo{ opacity: 1; }
+.lobby-sketch{ opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lobby-sketch{
+    animation: lobbySketchIn 900ms ease-out 2600ms forwards;
+  }
+  @keyframes lobbySketchIn{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+  }
+}
+
+/* overlay subtle for readability (doesn't look like marketing) */
+.lobby-overlay{
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 700px at 80% 20%, rgba(15,23,42,0.35), rgba(15,23,42,0.75));
+}
+
+/* text block (top-right) */
+.lobby-copy{
+  position: relative;
+  z-index: 2;
+  padding-top: 6.5rem; /* header height safe */
+}
+
+.lobby-copyBox{
+  max-width: 26rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.lobby-copyBox .line1{
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+.lobby-copyBox .line2,
+.lobby-copyBox .line3{
+  margin-top: .5rem;
+  color: rgba(255,255,255,0.78);
+}
+
+/* scroll hint */
+.lobby-hint{
+  position: absolute;
+  z-index: 2;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  color: rgba(255,255,255,0.75);
+  font-size: .875rem;
+  user-select: none;
+}
+
   </style>
 
   <!-- Schema.org (kept original COPY text, expanded with minimal safe fields + founder name) -->
@@ -221,7 +301,7 @@
         </a>
 
         <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center gap-2 text-sm">
+        <nav class="hidden" aria-hidden="true">
           <a href="#top" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
             דף הבית
           </a>
@@ -252,7 +332,7 @@
         <button
           type="button"
           id="mobileMenuBtn"
-          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/25 bg-white/10 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/70"
+          class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/25 bg-white/10 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/70"
           aria-label="פתח תפריט"
           aria-expanded="false"
           aria-controls="mobileMenuOverlay"
@@ -431,57 +511,79 @@
   </header>
 
   <main>
-    <!-- HERO (kept COPY exactly) -->
-    <section class="py-12 md:py-20 ui-section">
+      <!-- LOBBY (replaces HERO) -->
+<section class="lobby ui-section" aria-label="כניסה">
+  <div class="lobby-media" aria-hidden="true">
+    <!-- photo -->
+    <img
+      class="lobby-photo"
+      src="https://placehold.co/1600x1000"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- sketch (same crop, same position) -->
+    <img
+      class="lobby-sketch"
+      src="https://placehold.co/1600x1000?text=SKETCH"
+      alt=""
+      loading="eager"
+    />
+  </div>
+
+  <div class="lobby-overlay" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lobby-copy">
+    <div class="lobby-copyBox">
+      <div class="line1">דין מדאג’י · קונסטרוקטור</div>
+      <div class="line2">תכנון שלד · אישורים · ליווי</div>
+      <div class="line3">כרמיאל · צפון · מרכז</div>
+    </div>
+  </div>
+
+  <div class="lobby-hint" aria-hidden="true">גלילה ↓</div>
+</section>
+
+ <section id="about" class="py-12 md:py-20 ui-section">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 class="text-3xl md:text-5xl font-semibold leading-tight text-[var(--color-primary)] ui-title">
-              ניצב הנדסה – תכנון קונסטרוקציה וייעוץ הנדסי
-            </h1>
-            <p class="mt-5 text-base md:text-lg text-slate-700 ui-subtitle">
-              תכנון מדויק, ליווי מקצועי ואישורים הנדסיים לפרויקטים בבנייה חדשה ובמבנים קיימים.
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+          <div class="lg:col-span-1">
+            <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">אודות</h2>
+            <p class="mt-3 text-slate-700">
+              דין מדאג'י – קונסטרוקטור
             </p>
 
-            <!-- Quick trust row (safe, no new claims) -->
-            <div class="mt-6 flex flex-wrap gap-2 text-sm text-slate-700">
-              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white ui-card ui-card--flat">
-                <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]"></span>
-                דין מדאג'י
-              </span>
-              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white ui-card ui-card--flat">
-                <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]"></span>
-                חיפה • הקריות • אזור הצפון • מרכז הארץ
-              </span>
-            </div>
+            <div class="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm ui-card ui-card--soft">
+              <div class="text-sm text-slate-700">
 
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-primary">
-                צרו קשר
-              </a>
-              <a href="tel:046510997" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-300 text-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-secondary">
-                התקשרו עכשיו
-              </a>
-            </div>
-
-            <!-- Secondary CTA to improve conversions -->
-            <div class="mt-4">
-              <a href="#quickLead" class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] underline decoration-slate-300 hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] rounded-sm">
-                בדקו התאמה לפרויקט שלכם
-                <span aria-hidden="true"></span>
-              </a>
+              </div>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm ui-media">
-              <img src="https://placehold.co/800x600" alt="תמונה להמחשה" class="w-full h-auto" loading="eager" fetchpriority="high">
+          <div class="lg:col-span-2">
+            <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
+              <p class="text-slate-700 leading-relaxed whitespace-pre-line">
+נעים להכיר, דין מדאג'י, קונסטרוקטור ובעלים של משרד “ניצב הנדסה”.
+המשרד פועל באזור הצפון והמרכז – חיפה, הקריות, אזור הצפון ומרכז הארץ.
+משרד ניצב הנדסה מתמחה בתכנון קונסטרוקציות מבטון מזוין ופלדה למבני מגורים, מסחר ותעשייה.
+לאורך השנים נבנו מעל 800 פרויקטים מוצלחים.
+אנו מקפידים על ליווי מקצועי אישי לכל לקוח, משלב התכנון ועד סיום שלב השלד, תוך זמינות ומענה שוטף.
+              </p>
             </div>
 
-            <!-- Mini card -->
-            <div class="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm ui-card ui-card--soft">
-              <div class="text-sm text-slate-700">
-
+            <!-- TRUST (NEW, safe: no numbers, no claims) -->
+            <div id="trust" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
+                <div class="font-semibold text-slate-900">תכנון מדויק וליווי אישי</div>
+                <div class="mt-2 text-sm text-slate-700">ליווי מקצועי לאורך כל שלבי הפרויקט, משלב התכנון ועד סיום שלב השלד.</div>
+              </div>
+              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
+                <div class="font-semibold text-slate-900">ניסיון בפרויקטים מגוונים</div>
+                <div class="mt-2 text-sm text-slate-700">תכנון קונסטרוקציה למבני מגורים, מסחר ותעשייה, כולל מבנים קיימים ותוספות בנייה.</div>
+              </div>
+              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
+                <div class="font-semibold text-slate-900">זמינות ומענה מקצועי</div>
+                <div class="mt-2 text-sm text-slate-700">מענה הנדסי שוטף ופתרונות בזמן אמת בהתאם לצורכי הפרויקט.</div>
               </div>
             </div>
           </div>
@@ -533,53 +635,8 @@
       </div>
     </section>
 
-    <!-- ABOUT (kept COPY exactly + added safe small line with name) -->
-    <section id="about" class="py-12 md:py-20 ui-section">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          <div class="lg:col-span-1">
-            <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">אודות</h2>
-            <p class="mt-3 text-slate-700">
-              דין מדאג'י – קונסטרוקטור
-            </p>
-
-            <div class="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm ui-card ui-card--soft">
-              <div class="text-sm text-slate-700">
-
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-2">
-            <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-              <p class="text-slate-700 leading-relaxed whitespace-pre-line">
-נעים להכיר, דין מדאג'י, קונסטרוקטור ובעלים של משרד “ניצב הנדסה”.
-המשרד פועל באזור הצפון והמרכז – חיפה, הקריות, אזור הצפון ומרכז הארץ.
-משרד ניצב הנדסה מתמחה בתכנון קונסטרוקציות מבטון מזוין ופלדה למבני מגורים, מסחר ותעשייה.
-לאורך השנים נבנו מעל 800 פרויקטים מוצלחים.
-אנו מקפידים על ליווי מקצועי אישי לכל לקוח, משלב התכנון ועד סיום שלב השלד, תוך זמינות ומענה שוטף.
-              </p>
-            </div>
-
-            <!-- TRUST (NEW, safe: no numbers, no claims) -->
-            <div id="trust" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">תכנון מדויק וליווי אישי</div>
-                <div class="mt-2 text-sm text-slate-700">ליווי מקצועי לאורך כל שלבי הפרויקט, משלב התכנון ועד סיום שלב השלד.</div>
-              </div>
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">ניסיון בפרויקטים מגוונים</div>
-                <div class="mt-2 text-sm text-slate-700">תכנון קונסטרוקציה למבני מגורים, מסחר ותעשייה, כולל מבנים קיימים ותוספות בנייה.</div>
-              </div>
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">זמינות ומענה מקצועי</div>
-                <div class="mt-2 text-sm text-slate-700">מענה הנדסי שוטף ופתרונות בזמן אמת בהתאם לצורכי הפרויקט.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  
+   
 
     <!-- SERVICES (kept COPY exactly) -->
     <section id="services" class="py-12 md:py-20 bg-[var(--color-bg-muted)] ui-section">
@@ -741,8 +798,120 @@
     );
   }
 </style>
-
 <section id="process" class="py-12 md:py-20 bg-[var(--color-bg-muted)] ui-section">
+  <style>
+    /* =========================
+       PROCESS — VISUAL UPGRADE (NO JS)
+       Scoped to #process only
+       ========================= */
+
+    /* motion-safe only */
+    @media (prefers-reduced-motion: no-preference) {
+      #process .floaty { animation: floaty 4.5s ease-in-out infinite; }
+      #process .floaty2 { animation: floaty2 5.5s ease-in-out infinite; }
+      #process .pulseRing { animation: pulseRing 2.8s ease-out infinite; }
+      #process .shine { background-size: 200% 100%; animation: shine 3.2s linear infinite; }
+    }
+    @keyframes floaty { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-6px)} }
+    @keyframes floaty2 { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-10px)} }
+    @keyframes pulseRing { 0%{ transform: scale(1); opacity:.55 } 70%{ transform: scale(1.25); opacity:0 } 100%{ opacity:0 } }
+    @keyframes shine { 0%{ background-position: 0% 0 } 100%{ background-position: 100% 0 } }
+
+    /* Radio -> expand selected card (no JS) */
+    #process .stepRadio { position: absolute; opacity: 0; pointer-events: none; }
+
+    /* Track: thicker + more presence */
+    #process .track{
+      height: 10px; /* was h-2 (8px) in HTML; we override */
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(2,6,23,.08);
+      background: linear-gradient(90deg,
+        rgba(15,23,42,.12),
+        rgba(6,147,227,.28),
+        rgba(15,23,42,.12)
+      );
+    }
+
+    /* Nodes: larger + premium */
+    #process .nodesWrap label > span{
+      width: 56px;
+      height: 56px;
+      border-color: rgba(148,163,184,.65);
+      box-shadow: 0 10px 24px rgba(2,6,23,.08);
+    }
+    #process .nodesWrap label > span > span.text-sm{
+      font-size: 14px;
+    }
+    #process .nodesWrap label > span + span{
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    /* Cards: deterministic scale */
+    #process .stepCard{
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      padding: 28px;          /* was p-6 (24px) */
+      min-height: 270px;      /* stabilize height on desktop */
+      position: relative;     /* for ::before active bar */
+    }
+    #process .stepCard:hover { transform: translateY(-3px); }
+
+    #process .stepCard h3{
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    #process .stepCard p{
+      font-size: 14.5px;
+      line-height: 1.8;
+    }
+
+    /* stepBody: better breathing */
+    #process .stepBody{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      margin-top: 14px;
+      padding-top: 14px;
+    }
+    #process .stepBody ul{ margin-top: 6px; }
+
+    /* Selected state: clearer (no gold) */
+    #p1:checked ~ .gridWrap .c1,
+    #p2:checked ~ .gridWrap .c2,
+    #p3:checked ~ .gridWrap .c3,
+    #p4:checked ~ .gridWrap .c4{
+      border-color: rgba(6,147,227,.45);
+      box-shadow: 0 20px 54px rgba(2,6,23,.14);
+      transform: translateY(-6px);
+    }
+
+    /* Active bar (small) */
+    #p1:checked ~ .gridWrap .c1::before,
+    #p2:checked ~ .gridWrap .c2::before,
+    #p3:checked ~ .gridWrap .c3::before,
+    #p4:checked ~ .gridWrap .c4::before{
+      content:"";
+      display:block;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(6,147,227,.75);
+      margin-bottom: 14px;
+    }
+
+    /* Expand body on selected */
+    #p1:checked ~ .gridWrap .c1 .stepBody,
+    #p2:checked ~ .gridWrap .c2 .stepBody,
+    #p3:checked ~ .gridWrap .c3 .stepBody,
+    #p4:checked ~ .gridWrap .c4 .stepBody{
+      max-height: 220px;
+    }
+
+    /* Mobile: prevent too-tall cards */
+    @media (max-width: 1023px){
+      #process .stepCard{ min-height: 0; padding: 24px; }
+    }
+  </style>
+
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
       <div>
@@ -767,13 +936,13 @@
 
       <!-- Infographic track (desktop) -->
       <div class="hidden lg:block relative mb-8">
-        <div class="h-2 rounded-full track shine"></div>
+        <div class="rounded-full track shine"></div>
 
         <!-- nodes -->
-        <div class="absolute -top-5 right-0 flex items-center gap-0 w-full justify-between px-1">
+        <div class="nodesWrap absolute -top-6 right-0 flex items-center gap-0 w-full justify-between px-1">
           <!-- Node 1 -->
           <label for="p1" class="group cursor-pointer">
-            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty ui-card ui-card--flat">
+            <span class="relative inline-flex items-center justify-center rounded-full bg-white border shadow-sm floaty ui-card ui-card--flat">
               <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
               <span class="text-sm font-semibold text-[var(--color-primary)]">01</span>
             </span>
@@ -782,7 +951,7 @@
 
           <!-- Node 2 -->
           <label for="p2" class="group cursor-pointer">
-            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty2 ui-card ui-card--flat">
+            <span class="relative inline-flex items-center justify-center rounded-full bg-white border shadow-sm floaty2 ui-card ui-card--flat">
               <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
               <span class="text-sm font-semibold text-[var(--color-primary)]">02</span>
             </span>
@@ -791,7 +960,7 @@
 
           <!-- Node 3 -->
           <label for="p3" class="group cursor-pointer">
-            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty ui-card ui-card--flat">
+            <span class="relative inline-flex items-center justify-center rounded-full bg-white border shadow-sm floaty ui-card ui-card--flat">
               <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
               <span class="text-sm font-semibold text-[var(--color-primary)]">03</span>
             </span>
@@ -800,7 +969,7 @@
 
           <!-- Node 4 -->
           <label for="p4" class="group cursor-pointer">
-            <span class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 shadow-sm floaty2 ui-card ui-card--flat">
+            <span class="relative inline-flex items-center justify-center rounded-full bg-white border shadow-sm floaty2 ui-card ui-card--flat">
               <span class="absolute inset-0 rounded-full border border-[var(--color-accent)]/40 pulseRing"></span>
               <span class="text-sm font-semibold text-[var(--color-primary)]">04</span>
             </span>
@@ -809,103 +978,107 @@
         </div>
       </div>
 
-      <!-- Cards (act as infographic content) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <label for="p1" class="c1 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <div class="text-xs text-slate-500 ui-kicker">שלב 1</div>
-              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">פנייה והבנת צורך</h3>
+      <!-- Cards -->
+      <div class="gridWrap">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <label for="p1" class="c1 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white shadow-sm ui-card">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-500 ui-kicker">שלב 1</div>
+                <h3 class="mt-1 font-semibold text-[var(--color-primary)]">פנייה והבנת צורך</h3>
+              </div>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
+                <span class="text-sm font-semibold text-slate-900">01</span>
+              </span>
             </div>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
-              <span class="text-sm font-semibold text-slate-900">01</span>
-            </span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            שיחת ייעוץ ראשונית להבנת סוג הפרויקט, מיקומו וצרכי הלקוח.
-          </p>
-          <div class="stepBody mt-4 pt-4 border-t border-slate-100 ui-divider">
-            <ul class="text-sm text-slate-700 space-y-2">
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הבנת סוג הפרויקט והיקפו</span></li>
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>בירור צרכים ותיאום ציפיות</span></li>
-            </ul>
-          </div>
-          <div class="mt-4 text-xs text-slate-500"></div>
-        </label>
+            <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+              שיחת ייעוץ ראשונית להבנת סוג הפרויקט, מיקומו וצרכי הלקוח.
+            </p>
+            <div class="stepBody border-t border-slate-100 ui-divider">
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הבנת סוג הפרויקט והיקפו</span></li>
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>בירור צרכים ותיאום ציפיות</span></li>
+              </ul>
+            </div>
+            <div class="mt-4 text-xs text-slate-500"></div>
+          </label>
 
-        <!-- Card 2 -->
-        <label for="p2" class="c2 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <div class="text-xs text-slate-500 ui-kicker">שלב 2</div>
-              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">איסוף נתונים</h3>
+          <!-- Card 2 -->
+          <label for="p2" class="c2 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white shadow-sm ui-card">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-500 ui-kicker">שלב 2</div>
+                <h3 class="mt-1 font-semibold text-[var(--color-primary)]">איסוף נתונים</h3>
+              </div>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
+                <span class="text-sm font-semibold text-slate-900">02</span>
+              </span>
             </div>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
-              <span class="text-sm font-semibold text-slate-900">02</span>
-            </span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            קבלת תכניות קיימות, מדידות ואיסוף מידע רלוונטי בהתאם לצורך.
-          </p>
-          <div class="stepBody mt-4 pt-4 border-t border-slate-100 ui-divider">
-            <ul class="text-sm text-slate-700 space-y-2">
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>קבלת תכניות ומסמכים קיימים</span></li>
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>איסוף נתונים רלוונטיים לפרויקט</span></li>
-            </ul>
-          </div>
-          <div class="mt-4 text-xs text-slate-500"></div>
-        </label>
+            <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+              קבלת תכניות קיימות, מדידות ואיסוף מידע רלוונטי בהתאם לצורך.
+            </p>
+            <div class="stepBody border-t border-slate-100 ui-divider">
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>קבלת תכניות ומסמכים קיימים</span></li>
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>איסוף נתונים רלוונטיים לפרויקט</span></li>
+              </ul>
+            </div>
+            <div class="mt-4 text-xs text-slate-500"></div>
+          </label>
 
-        <!-- Card 3 -->
-        <label for="p3" class="c3 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <div class="text-xs text-slate-500 ui-kicker">שלב 3</div>
-              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">תכנון ואישורים</h3>
+          <!-- Card 3 -->
+          <label for="p3" class="c3 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white shadow-sm ui-card">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-500 ui-kicker">שלב 3</div>
+                <h3 class="mt-1 font-semibold text-[var(--color-primary)]">תכנון ואישורים</h3>
+              </div>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
+                <span class="text-sm font-semibold text-slate-900">03</span>
+              </span>
             </div>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
-              <span class="text-sm font-semibold text-slate-900">03</span>
-            </span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            הכנת תכנית קונסטרוקציה מפורטת וקבלת האישורים ההנדסיים הנדרשים.
-          </p>
-          <div class="stepBody mt-4 pt-4 border-t border-slate-100 ui-divider">
-            <ul class="text-sm text-slate-700 space-y-2">
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הכנת תכנון קונסטרוקציה מפורט</span></li>
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>טיפול בקבלת האישורים הנדרשים</span></li>
-            </ul>
-          </div>
-          <div class="mt-4 text-xs text-slate-500"></div>
-        </label>
+            <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+              הכנת תכנית קונסטרוקציה מפורטת וקבלת האישורים ההנדסיים הנדרשים.
+            </p>
+            <div class="stepBody border-t border-slate-100 ui-divider">
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>הכנת תכנון קונסטרוקציה מפורט</span></li>
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>טיפול בקבלת האישורים הנדרשים</span></li>
+              </ul>
+            </div>
+            <div class="mt-4 text-xs text-slate-500"></div>
+          </label>
 
-        <!-- Card 4 -->
-        <label for="p4" class="c4 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <div class="text-xs text-slate-500 ui-kicker">שלב 4</div>
-              <h3 class="mt-1 font-semibold text-[var(--color-primary)]">ליווי בשטח</h3>
+          <!-- Card 4 -->
+          <label for="p4" class="c4 stepCard cursor-pointer rounded-xl border border-slate-200 bg-white shadow-sm ui-card">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs text-slate-500 ui-kicker">שלב 4</div>
+                <h3 class="mt-1 font-semibold text-[var(--color-primary)]">ליווי בשטח</h3>
+              </div>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
+                <span class="text-sm font-semibold text-slate-900">04</span>
+              </span>
             </div>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 border border-slate-200 ui-card ui-card--flat">
-              <span class="text-sm font-semibold text-slate-900">04</span>
-            </span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            מענה מקצועי וליווי לאורך שלבי הבנייה ועד גמר השלד.
-          </p>
-          <div class="stepBody mt-4 pt-4 border-t border-slate-100 ui-divider">
-            <ul class="text-sm text-slate-700 space-y-2">
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>ליווי מקצועי במהלך הביצוע</span></li>
-              <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>מענה הנדסי לשאלות ובעיות בשטח</span></li>
-            </ul>
-          </div>
-          <div class="mt-4 text-xs text-slate-500"></div>
-        </label>
+            <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+              מענה מקצועי וליווי לאורך שלבי הבנייה ועד גמר השלד.
+            </p>
+            <div class="stepBody border-t border-slate-100 ui-divider">
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>ליווי מקצועי במהלך הביצוע</span></li>
+                <li class="flex gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span><span>מענה הנדסי לשאלות ובעיות בשטח</span></li>
+              </ul>
+            </div>
+            <div class="mt-4 text-xs text-slate-500"></div>
+          </label>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
     <!-- QUICK LEAD (NEW) -->
     <section id="quickLead" class="py-12 md:py-20 ui-section">

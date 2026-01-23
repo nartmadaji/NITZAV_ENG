@@ -18,37 +18,224 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    :root {
-      --color-bg: #EAF6FD;
-      
-      --color-primary: #0F172A;
-      --color-secondary: #475569;
+:root{
+  /* Base page background — very light cool tint */
+  --color-bg: #ffffff;
 
-      --color-border: #E2E8F0;
+  /* Section alternate background — subtle, not heavy */
+  --color-bg-muted: #e8f5f7;
 
-      --color-accent: #0693e3;
-      --color-accent-soft: #8ed1fc;
+  /* Cards / surfaces */
+  --color-surface: #FFFFFF;
 
-      --color-surface: #FFFFFF;
-      --color-bg-muted: #DCE7EE;
-      --color-text: var(--color-primary);
-      --color-text-muted: var(--color-secondary);
-      --color-text-inverse: #FFFFFF;
-      --color-link: var(--color-accent);
-      --color-focus-ring: rgba(6, 147, 227, 0.35);
-      --color-accent-hover: #067BC2;
-      --color-border-strong: #CBD1D8;
+  /* Borders tuned to the lighter backgrounds */
+  --color-border: #E3ECF4;
+  --color-border-strong: #ffffff;
 
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --radius-xl: 22px;
+  /* RESTORED (MUST EXIST) */
+  --color-primary: #0F172A;
+  --color-secondary: #475569;
 
-      --shadow-sm: 0 8px 22px rgba(2, 6, 23, 0.06);
-      --shadow-md: 0 14px 34px rgba(2, 6, 23, 0.10);
-      --shadow-lg: 0 20px 48px rgba(2, 6, 23, 0.14);
-    }
+  --color-accent: #0693e3;
+  --color-accent-soft: #8ed1fc;
+
+  --color-text: var(--color-primary);
+  --color-text-muted: var(--color-secondary);
+  --color-text-inverse: #FFFFFF;
+
+  --color-link: var(--color-accent);
+  --color-focus-ring: rgba(6, 147, 227, 0.35);
+  --color-accent-hover: #067BC2;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+
+  --shadow-sm: 0 8px 22px rgba(2, 6, 23, 0.06);
+  --shadow-md: 0 14px 34px rgba(2, 6, 23, 0.10);
+  --shadow-lg: 0 20px 48px rgba(2, 6, 23, 0.14);
+}
+
+
     summary::-webkit-details-marker { display: none; }
+
+/* =============================
+   HERO KANDO (SCOPED)
+   ============================= */
+   #heroKando{
+  background: var(--color-surface); /* או #fff */
+}
+
+#heroKando .hero{
+  background: var(--color-surface); /* או #fff */
+}
+
+#heroKando{
+  --header-h: 64px;     /* match your h-16 header */
+  --pad: 24px;
+  --pad-lg: 60px;
+  --img-gap: 140px;
+  --hero-top: 120px;
+}
+
+#heroKando .hero{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: var(--header-h);
+  overflow: hidden;
+}
+
+#heroKando .hero-inner{
+  padding: 24px var(--pad) 0 var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#heroKando .hero-overlay{
+  background: #fff;      
+  display: flex;
+  align-items: flex-start;
+  padding: 34px 22px;
+
+  border: 0;            
+  border-radius: 0;    
+  box-shadow: none;     
+}
+
+#heroKando .hero-text{
+  max-width: 520px;
+}
+#heroKando .hero-text p{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2.2;
+  color: var(--color-primary);
+}
+
+#heroKando .hero-text .typed-line{ margin-bottom: 30px; }
+
+#heroKando .typed-cursor{
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  background: var(--color-primary);
+  margin-right: 3px;
+  animation: heroKandoBlink 1s infinite;
+  vertical-align: middle;
+}
+@keyframes heroKandoBlink{ 0%,50%{opacity:1}51%,100%{opacity:0} }
+
+#heroKando .hero-slider{
+  position: relative;
+  width: 100%;
+  height: 56vh;
+  min-height: 360px;
+  overflow: hidden;
+  z-index: 1;
+  
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+#heroKando .hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+#heroKando .hero-slide.active{ opacity: 1; }
+
+#heroKando .hero-slide-bg{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+#heroKando .placeholder{
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #d0d0d0,
+      #d0d0d0 10px,
+      #e0e0e0 10px,
+      #e0e0e0 20px
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #888;
+  letter-spacing: .1em;
+}
+
+#heroKando .slide-counter{
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-size: 12px;
+  color: #666;
+  z-index: 3;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(226,232,240,0.9);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+/* Breakpoints (min-width only) */
+@media (min-width: 640px){
+  #heroKando{ --pad: 30px; }
+  #heroKando .hero-inner{ padding: 28px var(--pad) 0 var(--pad); }
+  #heroKando .hero-slider{ height: 50vh; min-height: 360px; } /* CHANGED: smaller + higher feel */
+}
+
+@media (min-width: 1024px){
+  #heroKando{ --pad: 60px; }
+
+  #heroKando .hero{
+    height: 100vh;
+    padding-top: 0;
+  }
+
+  #heroKando .hero-inner{
+    padding: 0;
+    display: block;
+  }
+
+  #heroKando .hero-slider{
+    position: absolute;
+    top: 90px;                 /* CHANGED: raise image */
+    left: 0;
+    right: var(--img-gap);
+    bottom: 100px;              /* CHANGED: shorten from bottom */
+    height: auto;
+    min-height: 0;
+  }
+
+  #heroKando .hero-overlay{
+    position: absolute;
+    top: var(--header-h);
+    right: var(--img-gap);
+    width: 38%;
+    height: 50%;
+    padding: 50px 50px 50px 60px;
+    z-index: 2;
+  }
+
+  #heroKando .slide-counter{
+    bottom: 30px;
+    left: 30px;
+  }
+}
+
+@media (min-width: 1280px){
+  #heroKando .hero-overlay{ width: 36%; }
+}
+
 
     /* =========================
        UI TOKENS -> COMPONENTS
@@ -178,83 +365,99 @@
     }
 
     /* =========================
-   LOBBY (Hero replacement)
+   GLOBAL SECTION BACKGROUNDS
+   (no HTML changes required)
    ========================= */
-.lobby{
-  min-height: 100vh;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: #0B1220; /* fallback אם אין תמונה */
+
+/* Default section background follows page bg */
+.ui-section{
+  background: transparent;
 }
 
-.lobby-media{
-  position: absolute;
-  inset: 0;
+/* Any section that currently uses bg-[var(--color-bg-muted)] remains the alternate stripe */
+section.bg-\[var\(--color-bg-muted\)\]{
+  background: var(--color-bg-muted) !important;
 }
 
-.lobby-media img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02);
+/* Make sure plain sections sit cleanly on page bg */
+.ui-body{
+  background: var(--color-bg);
 }
 
-.lobby-photo{ opacity: 1; }
-.lobby-sketch{ opacity: 0; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .lobby-sketch{
-    animation: lobbySketchIn 900ms ease-out 2600ms forwards;
-  }
-  @keyframes lobbySketchIn{
-    from{ opacity: 0; }
-    to{ opacity: 1; }
-  }
+/* Keep HERO pure white no matter what */
+#heroKando{
+  background: var(--color-surface) !important;
+}
+#heroKando .hero{
+  background: var(--color-surface) !important;
 }
 
-/* overlay subtle for readability (doesn't look like marketing) */
-.lobby-overlay{
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(1200px 700px at 80% 20%, rgba(15,23,42,0.35), rgba(15,23,42,0.75));
+/* =========================
+   HEADER VISIBILITY FIX
+   Force light header + dark text (no HTML edits)
+   ========================= */
+#siteHeader{
+  background: rgba(255,255,255,0.92) !important;
+  color: var(--color-primary) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  backdrop-filter: blur(10px);
 }
 
-/* text block (top-right) */
-.lobby-copy{
-  position: relative;
-  z-index: 2;
-  padding-top: 6.5rem; /* header height safe */
+#siteHeader a,
+#siteHeader nav a{
+  color: var(--color-primary) !important;
 }
 
-.lobby-copyBox{
-  max-width: 26rem;
-  color: rgba(255,255,255,0.92);
+/* desktop pills */
+#siteHeader .header-pill{
+  border-color: rgba(15,23,42,0.14) !important;
+  background: transparent !important;
 }
 
-.lobby-copyBox .line1{
-  font-weight: 600;
-  letter-spacing: .01em;
+#siteHeader .header-pill:hover{
+  background: rgba(15,23,42,0.06) !important;
+  color: var(--color-primary) !important;
 }
 
-.lobby-copyBox .line2,
-.lobby-copyBox .line3{
-  margin-top: .5rem;
-  color: rgba(255,255,255,0.78);
+/* "צור קשר" desktop pill (href="#contact") */
+#siteHeader nav a[href="#contact"]{
+  background: rgba(15,23,42,0.06) !important;
+  border-color: rgba(15,23,42,0.18) !important;
+  color: var(--color-primary) !important;
 }
 
-/* scroll hint */
-.lobby-hint{
-  position: absolute;
-  z-index: 2;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  color: rgba(255,255,255,0.75);
-  font-size: .875rem;
-  user-select: none;
+#siteHeader nav a[href="#contact"]:hover{
+  background: var(--color-primary) !important;
+  color: #fff !important;
 }
+
+/* hamburger button */
+#mobileMenuBtn{
+  border-color: rgba(15,23,42,0.18) !important;
+  background: rgba(15,23,42,0.04) !important;
+  color: var(--color-primary) !important;
+}
+#mobileMenuBtn:hover{
+  background: rgba(15,23,42,0.07) !important;
+}
+
+/* דף הבית בלבד: הסתרת פריטי תפריט בדסקטופ */
+.page-home #siteHeader nav a[href="#about"],
+.page-home #siteHeader nav a[href="#usecases"],
+.page-home #siteHeader nav a[href="#faq"],
+.page-home #siteHeader nav a[href="#contact"]{
+  display: none !important;
+}
+
+/* דף הבית בלבד: הסתרת פריטי תפריט במובייל (תפריט ההמבורגר) */
+.page-home #mobileMenuOverlay nav a[href="#about"],
+.page-home #mobileMenuOverlay nav a[href="#usecases"],
+.page-home #mobileMenuOverlay nav a[href="#deliverables"],
+.page-home #mobileMenuOverlay nav a[href="#faq"],
+.page-home #mobileMenuOverlay nav a[href="#contact"]{
+  display: none !important;
+}
+
 
   </style>
 
@@ -286,22 +489,22 @@
   </script>
 </head>
 
-<body class="text-slate-900 overflow-x-hidden ui-body">
+<body class="text-slate-900 overflow-x-hidden ui-body page-home">
   <div id="top"></div>
 
   <!-- Header -->
-  <header id="siteHeader" class="relative z-50 border-b border-white/10 bg-[var(--color-primary)] text-white">
+<header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 transform-gpu translate-y-0 transition-transform duration-200 ease-out will-change-transform border-b border-white/10 bg-[var(--color-primary)] text-white">
     <!-- Single spacer (FIX: removed duplicate id) -->
     
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="h-16 flex items-center justify-between gap-4">
+      <div class="h-16 relative flex items-center justify-between gap-4">
         <a href="#top" class="whitespace-nowrap font-semibold text-lg text-white">
           ניצב הנדסה
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden" aria-hidden="true">
+        <nav class="hidden lg:flex items-center gap-2 text-sm absolute left-1/2 -translate-x-1/2">
           <a href="#top" class="header-pill px-4 py-2 rounded-full border border-white/20 bg-white/0 text-white hover:bg-white hover:text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-white/70">
             דף הבית
           </a>
@@ -332,7 +535,7 @@
         <button
           type="button"
           id="mobileMenuBtn"
-          class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/25 bg-white/10 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/70"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/25 bg-white/10 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/70"
           aria-label="פתח תפריט"
           aria-expanded="false"
           aria-controls="mobileMenuOverlay"
@@ -384,82 +587,62 @@
     </div>
 
     <!-- Header behavior script (kept, fixed spacer targeting) -->
-    <script defer>
-      (function () {
-        var header = document.getElementById('siteHeader');
-        var spacer = document.getElementById('headerSpacer');
-        if (!header) return;
+ <script defer>
+  (function () {
+    var header = document.getElementById('siteHeader');
+    var spacer = document.getElementById('headerSpacer');
+    if (!header) return;
 
-        header.classList.add(
-          'fixed', 'top-0', 'left-0', 'right-0',
-          'transition-transform', 'duration-200', 'ease-out',
-          'will-change-transform'
-        );
+    // prevent layout jump
+    if (spacer) spacer.classList.add('h-16');
 
-        if (spacer) spacer.classList.add('h-16');
+    function showHeader() {
+      header.classList.remove('-translate-y-full');
+      header.classList.add('translate-y-0');
+    }
 
-        header.classList.remove('-translate-y-full');
-        header.classList.add('translate-y-0');
+    function hideHeader() {
+      header.classList.remove('translate-y-0');
+      header.classList.add('-translate-y-full');
+    }
 
-        var lastY = window.scrollY || 0;
-        var accumUp = 0;
+    showHeader();
 
-        var SHOW_AFTER_UP = 36;
-        var HIDE_AFTER_DOWN = 24;
-        var ALWAYS_SHOW_TOP = 24;
+    var lastY = window.scrollY || 0;
 
-        function showHeader() {
-          header.classList.remove('-translate-y-full');
-          header.classList.add('translate-y-0');
+    var ALWAYS_SHOW_TOP = 24;
+    var HIDE_AFTER_Y    = 80;
+    var DOWN_DEADZONE   = 6;
+    var UP_DEADZONE     = 4;
+
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(function () {
+        ticking = false;
+
+        var y = window.scrollY || 0;
+        var dy = y - lastY;
+
+        if (y <= ALWAYS_SHOW_TOP) {
+          showHeader();
+          lastY = y;
+          return;
         }
 
-        function hideHeader() {
-          header.classList.remove('translate-y-0');
-          header.classList.add('-translate-y-full');
-        }
+        if (dy > DOWN_DEADZONE && y > HIDE_AFTER_Y) hideHeader();
+        if (dy < -UP_DEADZONE) showHeader();
 
-        var ticking = false;
-        function onScroll() {
-          if (ticking) return;
-          ticking = true;
-          requestAnimationFrame(function () {
-            ticking = false;
-            var y = window.scrollY || 0;
+        lastY = y;
+      });
+    }, { passive: true });
+  })();
+</script>
 
-            if (y <= ALWAYS_SHOW_TOP) {
-              accumUp = 0;
-              showHeader();
-              lastY = y;
-              return;
-            }
 
-            var dy = y - lastY;
 
-            if (dy > 0) {
-              accumUp = 0;
-              if (dy >= HIDE_AFTER_DOWN) hideHeader();
-              lastY = y;
-              return;
-            }
-
-            if (dy < 0) {
-              accumUp += (-dy);
-              if (accumUp >= SHOW_AFTER_UP) {
-                showHeader();
-                accumUp = 0;
-              }
-              lastY = y;
-              return;
-            }
-
-            lastY = y;
-          });
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      })();
-    </script>
 
     <!-- Mobile menu script -->
     <script defer>
@@ -510,181 +693,628 @@
     </script>
   </header>
 
+<div id="headerSpacer" class="h-16"></div>
+
   <main>
-      <!-- LOBBY (replaces HERO) -->
-<section class="lobby ui-section" aria-label="כניסה">
-  <div class="lobby-media" aria-hidden="true">
-    <!-- photo -->
-    <img
-      class="lobby-photo"
-      src="https://placehold.co/1600x1000"
-      alt=""
-      loading="eager"
-      fetchpriority="high"
-    />
-    <!-- sketch (same crop, same position) -->
-    <img
-      class="lobby-sketch"
-      src="https://placehold.co/1600x1000?text=SKETCH"
-      alt=""
-      loading="eager"
-    />
+    <!-- HERO (kept COPY exactly) -->
+<section id="heroKando" class="ui-section">
+<h1 class="sr-only">ניצב הנדסה - תכנון קונסטרוקציה וייעוץ הנדסי</h1>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-overlay">
+        <div class="hero-text">
+          <p class="typed-line">הפרויקטים שלנו הם <span id="typed-text"></span><span class="typed-cursor"></span></p>
+          <p>תכנון קונסטרוקציה מדויק ומקצועי.</p>
+          <p>ליווי הנדסי מהשלב הראשון ועד גמר השלד.</p>
+          <p>אישורים הנדסיים למבנים חדשים וקיימים.</p>
+          <p>ואנחנו עושים את זה עם מחויבות.</p>
+        </div>
+      </div>
+
+      <div class="hero-slider" aria-label="גלריית פרויקטים">
+        <div class="hero-slide active">
+          <div class="hero-slide-bg placeholder">תמונה 1</div>
+        </div>
+        <div class="hero-slide">
+          <div class="hero-slide-bg placeholder" style="background: repeating-linear-gradient(-45deg, #c0c0c0, #c0c0c0 10px, #d0d0d0 10px, #d0d0d0 20px);">תמונה 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-counter"><span id="current-slide">1</span>/2</div>
   </div>
+</section>
 
-  <div class="lobby-overlay" aria-hidden="true"></div>
+<script defer>
+  (function () {
+    // Typed effect
+    var phrases = ['מדויקים.', 'מקצועיים.', 'אמינים.', 'בטוחים.'];
+    var pi = 0, ci = 0, del = false;
+    var el = document.getElementById('typed-text');
+    if (!el) return;
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lobby-copy">
-    <div class="lobby-copyBox">
-      <div class="line1">דין מדאג’י · קונסטרוקטור</div>
-      <div class="line2">תכנון שלד · אישורים · ליווי</div>
-      <div class="line3">כרמיאל · צפון · מרכז</div>
+    function type() {
+      var phrase = phrases[pi];
+      ci = del ? (ci - 1) : (ci + 1);
+      el.textContent = phrase.substring(0, ci);
+
+      var delay = del ? 40 : 80;
+      if (!del && ci === phrase.length) { delay = 2000; del = true; }
+      else if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; delay = 400; }
+
+      setTimeout(type, delay);
+    }
+    type();
+
+    // Slider
+    var slides = document.querySelectorAll('#heroKando .hero-slide');
+    var counter = document.getElementById('current-slide');
+    var cur = 0;
+
+    if (slides.length > 1 && counter) {
+      setInterval(function () {
+        slides[cur].classList.remove('active');
+        cur = (cur + 1) % slides.length;
+        slides[cur].classList.add('active');
+        counter.textContent = String(cur + 1);
+      }, 4000);
+    }
+  })();
+</script>
+
+<!-- ABOUT (Teaser קצר לדף הבית — אותו מבנה/מחלקות, רק טקסט מקוצר + CTA) -->
+<section id="about" class="py-14 md:py-24 ui-section">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="max-w-3xl">
+      <p class="text-xs tracking-widest text-slate-500">אודות</p>
+      <h2 class="mt-3 text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">
+        דין מדאג'י
+      </h2>
+      <p class="mt-2 text-slate-600">
+        דין מדאג'י · קונסטרוקטור · ניצב הנדסה
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+      <!-- Main copy -->
+      <div class="lg:col-span-7">
+        <div class="border-t border-slate-200 pt-6">
+          <p class="text-slate-700 leading-relaxed whitespace-pre-line">
+דין מדאג'י, קונסטרוקטור ובעלים של משרד “ניצב הנדסה”.
+המשרד פועל בחיפה, הקריות, אזור הצפון ומרכז הארץ.
+תכנון קונסטרוקציות מבטון מזוין ופלדה למבני מגורים, מסחר ותעשייה — בליווי אישי משלב התכנון ועד סיום שלב השלד.
+          </p>
+
+          <!-- CTA (link to dedicated About page + optional call) -->
+          <div class="mt-6 flex flex-wrap gap-3">
+            <!-- TODO: לעדכן לכתובת עמוד האודות בפועל (למשל /about או about.html) -->
+            <a href=""
+               class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-primary">
+              לעמוד האודות
+            </a>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick facts -->
+      <aside class="lg:col-span-5">
+        <div class="border border-slate-200 rounded-2xl p-6">
+          <h3 class="text-sm font-semibold text-slate-900">פרטים מהירים</h3>
+
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex items-start justify-between gap-6">
+              <dt class="text-slate-500">אזורי פעילות</dt>
+              <dd class="text-slate-900 text-left">חיפה, הקריות, אזור הצפון ומרכז הארץ</dd>
+            </div>
+            <div class="flex items-start justify-between gap-6">
+              <dt class="text-slate-500">התמחות</dt>
+              <dd class="text-slate-900 text-left">בטון מזוין ופלדה · מגורים · מסחר · תעשייה</dd>
+            </div>
+            <div class="flex items-start justify-between gap-6">
+              <dt class="text-slate-500">היקף ניסיון</dt>
+              <dd class="text-slate-900 text-left">מעל 800 פרויקטים מוצלחים</dd>
+            </div>
+            <div class="flex items-start justify-between gap-6">
+              <dt class="text-slate-500">ליווי</dt>
+              <dd class="text-slate-900 text-left">משלב התכנון ועד סיום שלב השלד</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- TRUST (קוצר מאוד, נשאר אותו תוכן רעיוני בלבד) -->
+    <div id="trust" class="mt-10 border-t border-slate-200 pt-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="sm:pr-0 sm:border-r sm:border-slate-200 sm:pl-6">
+          <div class="text-sm font-semibold text-slate-900">תכנון מדויק וליווי אישי</div>
+          <p class="mt-2 text-sm text-slate-600">
+            ליווי מקצועי משלב התכנון ועד סיום שלב השלד.
+          </p>
+        </div>
+
+        <div class="sm:pr-0 sm:border-r sm:border-slate-200 sm:pl-6">
+          <div class="text-sm font-semibold text-slate-900">ניסיון בפרויקטים מגוונים</div>
+          <p class="mt-2 text-sm text-slate-600">
+            מגורים, מסחר ותעשייה.
+          </p>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-slate-900">זמינות ומענה מקצועי</div>
+          <p class="mt-2 text-sm text-slate-600">
+            זמינות ומענה שוטף.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- USE CASES (NEW) -->
+<section id="usecases" class="py-12 md:py-20 bg-[var(--color-bg-muted)] ui-section">
+  <!-- FIX: scoped styles for chips + CTA (no breaking global UI) -->
+  <style>
+    /* keep text readable on hover for ALL chips */
+    #usecases .usecase-chip{
+      transition: background-color .15s ease, color .15s ease, border-color .15s ease, opacity .15s ease, transform .15s ease;
+    }
+
+    /* inactive chips: hover stays light but text stays dark */
+    #usecases .usecase-chip[aria-selected="false"]:hover{
+      background: rgba(255,255,255,0.85) !important;
+      color: rgb(15 23 42) !important; /* slate-900 */
+      border-color: rgba(226,232,240,1) !important;
+    }
+
+    /* active chip: hover stays PRIMARY (doesn't flip to white) */
+    #usecases .usecase-chip[aria-selected="true"]:hover{
+      background: var(--color-primary) !important;
+      color: #fff !important;
+      opacity: .95;
+    }
+
+    /* CTA behaves like primary pill on hover too */
+    #usecases #usecaseCta:hover{
+      background: var(--color-primary) !important;
+      color: #fff !important;
+      opacity: .95;
+    }
+  </style>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">למי זה מתאים</h2>
+        <p class="mt-3 text-slate-700 max-w-2xl ui-subtitle">
+          לקוחות פונים לניצב הנדסה במגוון מצבים בהם נדרש תכנון, אישור או פתרון הנדסי, החל משינויים במבנים קיימים ועד תכנון מבנים חדשים.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tabs / Chips -->
+    <div class="mt-8">
+      <div class="flex flex-wrap gap-2 justify-center md:justify-start" role="tablist" aria-label="בחירת מצב שירות">
+        <!-- FIX: active starts PRIMARY (not accent) -->
+        <button type="button" data-usecase-tab="new_build" role="tab" aria-selected="true"
+          class="usecase-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-transparent bg-[var(--color-primary)] text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+          אני בונה חדש
+        </button>
+
+        <button type="button" data-usecase-tab="existing" role="tab" aria-selected="false"
+          class="usecase-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+          מבנה קיים
+        </button>
+
+        <button type="button" data-usecase-tab="one_off" role="tab" aria-selected="false"
+          class="usecase-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+          אישור נקודתי
+        </button>
+
+        <button type="button" data-usecase-tab="on_site" role="tab" aria-selected="false"
+          class="usecase-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+          ייעוץ בשטח
+        </button>
+      </div>
+
+      <!-- Dynamic cards -->
+      <div id="usecaseCards" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- rendered by JS -->
+      </div>
+
+      <!-- Small CTA -->
+      <div class="mt-6 flex items-center justify-start">
+        <a id="usecaseCta" href="#contact"
+           class="usecase-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-transparent bg-[var(--color-primary)] text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+          בדיקת התאמה
+        </a>
+      </div>
     </div>
   </div>
 
-  <div class="lobby-hint" aria-hidden="true">גלילה ↓</div>
+  <script>
+    (function () {
+      var section = document.getElementById('usecases');
+      if (!section) return;
+
+      var chips = Array.prototype.slice.call(section.querySelectorAll('[data-usecase-tab]'));
+      var cardsEl = section.querySelector('#usecaseCards');
+      var ctaEl = section.querySelector('#usecaseCta');
+
+      if (!chips.length || !cardsEl) return;
+
+      var DATA = {
+        new_build: { label: 'אני בונה חדש', cards: [{ title: 'בנייה חדשה', fit: 'למי זה מתאים: מי שנמצא בשלב תכנון של מבנה חדש.', desc: 'תכנון שלד מקצועי ומדויק למבנה מגורים או מבנה תעשייתי.' }] },
+        existing: { label: 'מבנה קיים', cards: [
+          { title: 'תוספת ממ״ד / הרחבה', fit: 'למי זה מתאים: מי שמוסיף תוספת בנייה או ממ״ד למבנה קיים.', desc: 'בדיקת היתכנות, תכנון והנפקת האישורים הנדרשים לתוספת בנייה או לממ״ד חדש.' },
+          { title: 'שינוי במבנה קיים', fit: 'למי זה מתאים: מי שמבצע שינוי במבנה קיים ודורש תכנון/אישור הנדסי.', desc: 'תכנון וחיזוק אלמנטים קיימים והוצאת אישורים הנדסיים לשינויים במבנה.' },
+          { title: 'מיגון ממ״דים', fit: 'למי זה מתאים: מי שצריך מיגון ממ״ד בהתאם לדרישות פיקוד העורף.', desc: 'תכנון וייעוץ הנדסי למיגון בהתאם לדרישות פיקוד העורף.' }
+        ]},
+        one_off: { label: 'אישור נקודתי', cards: [{ title: 'אישור לפרגולה / בריכה', fit: 'למי זה מתאים: מי שצריך אישור מהנדס לתוספות חוץ.', desc: 'קבלת אישור מהנדס עבור תוספות חוץ כגון פרגולה או בריכת נוי.' }] },
+        on_site: { label: 'ייעוץ בשטח', cards: [{ title: 'ייעוץ במהלך הבנייה', fit: 'למי זה מתאים: מי שצריך מענה מהיר ופתרונות בזמן אמת במהלך ביצוע.', desc: 'מתן מענה הנדסי מהיר ופתרונות בזמן אמת לבעיות הנדסיות המתגלות בשטח.' }] }
+      };
+
+      function setChipActive(activeKey) {
+        chips.forEach(function (btn) {
+          var isActive = btn.getAttribute('data-usecase-tab') === activeKey;
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
+          if (isActive) {
+            btn.classList.add('bg-[var(--color-primary)]', 'text-white', 'border-transparent', 'shadow-sm');
+            btn.classList.remove('bg-white', 'text-slate-800', 'border-slate-200');
+          } else {
+            btn.classList.remove('bg-[var(--color-primary)]', 'text-white', 'border-transparent', 'shadow-sm');
+            btn.classList.add('bg-white', 'text-slate-800', 'border-slate-200');
+          }
+        });
+      }
+
+      function renderCards(key) {
+        var group = DATA[key] || DATA.new_build;
+        var cards = (group.cards || []).slice(0, 3);
+
+        cardsEl.innerHTML = cards.map(function (c) {
+          return (
+            '<div class="rounded-xl border border-slate-200 shadow-sm p-6 bg-white ui-card">' +
+              '<h3 class="font-semibold text-slate-900">' + escapeHtml(c.title) + '</h3>' +
+              '<p class="mt-3 text-sm text-slate-700 leading-relaxed">' + escapeHtml(c.fit) + '</p>' +
+              '<p class="mt-2 text-slate-700 leading-relaxed">' + escapeHtml(c.desc) + '</p>' +
+            '</div>'
+          );
+        }).join('');
+
+        if (ctaEl) {
+          ctaEl.setAttribute('data-usecase-selected', key);
+          ctaEl.setAttribute('aria-label', 'בדיקת התאמה — ' + (group.label || ''));
+        }
+      }
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function onChipClick(e) {
+        var key = e.currentTarget.getAttribute('data-usecase-tab');
+        if (!key) return;
+        setChipActive(key);
+        renderCards(key);
+      }
+
+      chips.forEach(function (btn) {
+        btn.addEventListener('click', onChipClick);
+      });
+
+      if (ctaEl) {
+        ctaEl.addEventListener('click', function () {
+          var key = ctaEl.getAttribute('data-usecase-selected') || 'new_build';
+          try { localStorage.setItem('usecase_selected', key); } catch (e) {}
+          var input = document.getElementById('contactUsecase');
+          if (input) input.value = (DATA[key] && DATA[key].label) ? DATA[key].label : key;
+        });
+      }
+
+      setChipActive('new_build');
+      renderCards('new_build');
+    })();
+  </script>
 </section>
 
- <section id="about" class="py-12 md:py-20 ui-section">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          <div class="lg:col-span-1">
-            <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">אודות</h2>
-            <p class="mt-3 text-slate-700">
-              דין מדאג'י – קונסטרוקטור
-            </p>
 
-            <div class="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm ui-card ui-card--soft">
-              <div class="text-sm text-slate-700">
+    <!-- SERVICES - Full Width List Style (Minimal) -->
+<style>
+  /* Services List - Scoped to #services */
+  
+  /* Staggered fade-in */
+  #services .service-item {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: servicesFadeInUp 0.5s ease forwards;
+  }
+  #services .service-item:nth-child(1) { animation-delay: 0.05s; }
+  #services .service-item:nth-child(2) { animation-delay: 0.1s; }
+  #services .service-item:nth-child(3) { animation-delay: 0.15s; }
+  #services .service-item:nth-child(4) { animation-delay: 0.2s; }
+  #services .service-item:nth-child(5) { animation-delay: 0.25s; }
+  #services .service-item:nth-child(6) { animation-delay: 0.3s; }
+  #services .service-item:nth-child(7) { animation-delay: 0.35s; }
+  
+  @keyframes servicesFadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-              </div>
-            </div>
-          </div>
+  /* Radio buttons hidden */
+  #services .srv-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
 
-          <div class="lg:col-span-2">
-            <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm ui-card">
-              <p class="text-slate-700 leading-relaxed whitespace-pre-line">
-נעים להכיר, דין מדאג'י, קונסטרוקטור ובעלים של משרד “ניצב הנדסה”.
-המשרד פועל באזור הצפון והמרכז – חיפה, הקריות, אזור הצפון ומרכז הארץ.
-משרד ניצב הנדסה מתמחה בתכנון קונסטרוקציות מבטון מזוין ופלדה למבני מגורים, מסחר ותעשייה.
-לאורך השנים נבנו מעל 800 פרויקטים מוצלחים.
-אנו מקפידים על ליווי מקצועי אישי לכל לקוח, משלב התכנון ועד סיום שלב השלד, תוך זמינות ומענה שוטף.
+  /* Base item styling */
+  #services .service-item {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Watermark number - very subtle */
+  #services .service-number {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: rgba(15, 23, 42, 0.03);
+    pointer-events: none;
+    line-height: 1;
+    z-index: 0;
+    transition: color 0.2s ease;
+  }
+
+  /* Content wrapper */
+  #services .service-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Arrow - minimal */
+  #services .service-arrow {
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    color: var(--color-accent);
+  }
+
+  /* ========== HOVER STATE ========== */
+  #services .service-item:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  #services .service-item:hover .service-arrow {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+
+  /* ========== SELECTED STATE - Single accent only ========== */
+  #srv1:checked ~ .services-list .srv-item-1,
+  #srv2:checked ~ .services-list .srv-item-2,
+  #srv3:checked ~ .services-list .srv-item-3,
+  #srv4:checked ~ .services-list .srv-item-4,
+  #srv5:checked ~ .services-list .srv-item-5,
+  #srv6:checked ~ .services-list .srv-item-6,
+  #srv7:checked ~ .services-list .srv-item-7 {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Selected: arrow visible */
+  #srv1:checked ~ .services-list .srv-item-1 .service-arrow,
+  #srv2:checked ~ .services-list .srv-item-2 .service-arrow,
+  #srv3:checked ~ .services-list .srv-item-3 .service-arrow,
+  #srv4:checked ~ .services-list .srv-item-4 .service-arrow,
+  #srv5:checked ~ .services-list .srv-item-5 .service-arrow,
+  #srv6:checked ~ .services-list .srv-item-6 .service-arrow,
+  #srv7:checked ~ .services-list .srv-item-7 .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Selected: number slightly more visible */
+  #srv1:checked ~ .services-list .srv-item-1 .service-number,
+  #srv2:checked ~ .services-list .srv-item-2 .service-number,
+  #srv3:checked ~ .services-list .srv-item-3 .service-number,
+  #srv4:checked ~ .services-list .srv-item-4 .service-number,
+  #srv5:checked ~ .services-list .srv-item-5 .service-number,
+  #srv6:checked ~ .services-list .srv-item-6 .service-number,
+  #srv7:checked ~ .services-list .srv-item-7 .service-number {
+    color: rgba(6, 147, 227, 0.05);
+  }
+
+  /* ========== MOBILE ========== */
+  @media (max-width: 767px) {
+    #services .service-number {
+      font-size: 2.5rem;
+      right: 8px;
+    }
+    
+    #services .service-item {
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+  }
+</style>
+
+<section id="services" class="py-16 md:py-24 bg-[var(--color-bg-muted)] ui-section">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-primary)] ui-title">שירותים</h2>
+        <p class="mt-4 text-slate-600 text-lg max-w-xl ui-subtitle">
+          תכנון, אישורים וייעוץ הנדסי בהתאמה לצרכי הפרויקט.
+        </p>
+      </div>
+      <a href="#quickLead" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white hover:opacity-95 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-primary">
+        בדיקה ראשונית לפרויקט
+      </a>
+    </div>
+
+    <!-- Hidden radio inputs -->
+    <input type="radio" name="service" id="srv1" class="srv-radio" checked>
+    <input type="radio" name="service" id="srv2" class="srv-radio">
+    <input type="radio" name="service" id="srv3" class="srv-radio">
+    <input type="radio" name="service" id="srv4" class="srv-radio">
+    <input type="radio" name="service" id="srv5" class="srv-radio">
+    <input type="radio" name="service" id="srv6" class="srv-radio">
+    <input type="radio" name="service" id="srv7" class="srv-radio">
+
+    <!-- Services List -->
+    <div class="services-list border-t border-slate-200/60">
+      
+      <!-- Service 1 -->
+      <label for="srv1" class="service-item srv-item-1 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">01</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                תכנון קונסטרוקציה (בטון מזוין ופלדה)
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                הכנת תכניות שלד מפורטות למבני מגורים, מסחר ותעשייה.
               </p>
             </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
+          </div>
+        </div>
+      </label>
 
-            <!-- TRUST (NEW, safe: no numbers, no claims) -->
-            <div id="trust" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">תכנון מדויק וליווי אישי</div>
-                <div class="mt-2 text-sm text-slate-700">ליווי מקצועי לאורך כל שלבי הפרויקט, משלב התכנון ועד סיום שלב השלד.</div>
-              </div>
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">ניסיון בפרויקטים מגוונים</div>
-                <div class="mt-2 text-sm text-slate-700">תכנון קונסטרוקציה למבני מגורים, מסחר ותעשייה, כולל מבנים קיימים ותוספות בנייה.</div>
-              </div>
-              <div class="rounded-lg border border-slate-200 bg-slate-50 p-5 ui-card ui-card--soft">
-                <div class="font-semibold text-slate-900">זמינות ומענה מקצועי</div>
-                <div class="mt-2 text-sm text-slate-700">מענה הנדסי שוטף ופתרונות בזמן אמת בהתאם לצורכי הפרויקט.</div>
-              </div>
+      <!-- Service 2 -->
+      <label for="srv2" class="service-item srv-item-2 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">02</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                אישורים הנדסיים למבנים קיימים
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                קבלת אישור הנדסי לשינויים, חיזוקים והתאמות במבנים קיימים.
+              </p>
             </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
           </div>
         </div>
-      </div>
-    </section>
+      </label>
 
-    <!-- USE CASES (NEW) -->
-    <section id="usecases" class="py-12 md:py-20 bg-[var(--color-bg-muted)] ui-section">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">למי זה מתאים</h2>
-            <p class="mt-3 text-slate-700 max-w-2xl ui-subtitle">
-              לקוחות פונים לניצב הנדסה במגוון מצבים בהם נדרש תכנון, אישור או פתרון הנדסי, החל משינויים במבנים קיימים ועד תכנון מבנים חדשים.
-            </p>
-          </div>
-          <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-secondary">
-            צרו קשר
-          </a>
-        </div>
-
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">תוספת ממ״ד / הרחבה</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">בדיקת היתכנות, תכנון והנפקת האישורים הנדרשים לתוספת בנייה או לממ״ד חדש.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">שינוי במבנה קיים</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">תכנון וחיזוק אלמנטים קיימים והוצאת אישורים הנדסיים לשינויים במבנה.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">אישור לפרגולה / בריכה</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">קבלת אישור מהנדס עבור תוספות חוץ כגון פרגולה או בריכת נוי.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">בנייה חדשה</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">תכנון שלד מקצועי ומדויק למבנה מגורים או מבנה תעשייתי.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">ייעוץ במהלך הבנייה</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">מתן מענה הנדסי מהיר ופתרונות בזמן אמת לבעיות הנדסיות המתגלות בשטח.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">מיגון ממ״דים</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">תכנון וייעוץ הנדסי למיגון בהתאם לדרישות פיקוד העורף.</p>
+      <!-- Service 3 -->
+      <label for="srv3" class="service-item srv-item-3 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">03</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                אישורים לתוספות בנייה וממ״ד
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                הוצאת אישורים לפרויקטים של הרחבות ותוספת ממ״ד בהתאם לדרישות התקן.
+              </p>
+            </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
           </div>
         </div>
-      </div>
-    </section>
+      </label>
 
-  
-   
-
-    <!-- SERVICES (kept COPY exactly) -->
-    <section id="services" class="py-12 md:py-20 bg-[var(--color-bg-muted)] ui-section">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-primary)] ui-title">שירותים</h2>
-            <p class="mt-3 text-slate-700 max-w-2xl ui-subtitle">
-              תכנון, אישורים וייעוץ הנדסי בהתאמה לצרכי הפרויקט.
-            </p>
-          </div>
-          <a href="#quickLead" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ui-btn-secondary">
-            בדיקה ראשונית לפרויקט
-          </a>
-        </div>
-
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">תכנון קונסטרוקציה (בטון מזוין ופלדה)</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">הכנת תכניות שלד מפורטות למבני מגורים, מסחר ותעשייה.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">אישורים הנדסיים למבנים קיימים</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">קבלת אישור הנדסי לשינויים, חיזוקים והתאמות במבנים קיימים.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">אישורים לתוספות בנייה וממ״ד</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">הוצאת אישורים לפרויקטים של הרחבות ותוספת ממ״ד בהתאם לדרישות התקן.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">אישור מהנדס לפרגולות ובריכות</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">הוצאת אישור הנדסי לפרגולה, בריכה או תוספת חוץ.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">ייעוץ הנדסי לפרויקטים</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">ליווי יזמים ואנשי מקצוע במהלך התכנון והבנייה, חוות דעת ובדיקת חלופות תכנוניות.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white ui-card">
-            <h3 class="font-semibold text-slate-900">פתרונות בזמן אמת</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">מענה מהיר וייעוץ הנדסי לבעיות בתכנון או בשטח.</p>
-          </div>
-          <div class="rounded-lg border border-slate-200 shadow-sm p-6 bg-white md:col-span-2 lg:col-span-1 ui-card">
-            <h3 class="font-semibold text-slate-900">ייעוץ מיגון לממ״דים</h3>
-            <p class="mt-3 text-slate-700 leading-relaxed">תכנון פתרונות מיגון בהתאם לדרישות פיקוד העורף.</p>
+      <!-- Service 4 -->
+      <label for="srv4" class="service-item srv-item-4 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">04</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                אישור מהנדס לפרגולות ובריכות
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                הוצאת אישור הנדסי לפרגולה, בריכה או תוספת חוץ.
+              </p>
+            </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
           </div>
         </div>
-      </div>
-    </section>
+      </label>
+
+      <!-- Service 5 -->
+      <label for="srv5" class="service-item srv-item-5 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">05</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                ייעוץ הנדסי לפרויקטים
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                ליווי יזמים ואנשי מקצוע במהלך התכנון והבנייה, חוות דעת ובדיקת חלופות תכנוניות.
+              </p>
+            </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Service 6 -->
+      <label for="srv6" class="service-item srv-item-6 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">06</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                פתרונות בזמן אמת
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                מענה מהיר וייעוץ הנדסי לבעיות בתכנון או בשטח.
+              </p>
+            </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Service 7 -->
+      <label for="srv7" class="service-item srv-item-7 py-5 md:py-6 border-b border-slate-200/60 pr-4 overflow-hidden">
+        <span class="service-number">07</span>
+        <div class="service-content">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="font-semibold text-base md:text-lg text-slate-900">
+                ייעוץ מיגון לממ״דים
+              </h3>
+              <p class="mt-1 text-slate-600 text-sm">
+                תכנון פתרונות מיגון בהתאם לדרישות פיקוד העורף.
+              </p>
+            </div>
+            <span class="service-arrow text-base flex-shrink-0">←</span>
+          </div>
+        </div>
+      </label>
+
+    </div>
+  </div>
+</section>
 
     <!-- DELIVERABLES (NEW) -->
     <section id="deliverables" class="py-12 md:py-20 ui-section">
@@ -1296,12 +1926,42 @@
   </main>
 
   <footer class="border-t border-slate-200 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-sm text-slate-700">
-        <span>כל הזכויות שמורות</span>
-        <span>ניצב הנדסה</span>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-slate-700">
+
+      <!-- Client links -->
+      <nav class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <!-- עדיף קבצים באתר של דין (או עמודים פנימיים) -->
+        <a href="/privacy.html"
+           class="text-slate-700 hover:text-slate-900 underline decoration-slate-300 hover:decoration-slate-500 underline-offset-4">
+          מדיניות פרטיות
+        </a>
+
+        <a href="/terms.html"
+           class="text-slate-700 hover:text-slate-900 underline decoration-slate-300 hover:decoration-slate-500 underline-offset-4">
+          תנאי שימוש
+        </a>
+
+        <a href="#contact"
+           class="text-slate-700 hover:text-slate-900 underline decoration-slate-300 hover:decoration-slate-500 underline-offset-4">
+          צור קשר
+        </a>
+      </nav>
+
+      <!-- Copyright + subtle credit -->
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span>כל הזכויות שמורות © ניצב הנדסה</span>
+        <span class="text-slate-400">|</span>
+
+        <a href="https://morvane.co.il" target="_blank" rel="noopener"
+           class="text-slate-500 hover:text-slate-900 underline decoration-slate-300 hover:decoration-slate-500 underline-offset-4">
+          אתר: MorVane
+        </a>
       </div>
+
     </div>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>

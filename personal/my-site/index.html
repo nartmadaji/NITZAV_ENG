@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="he" dir="rtl" class="scroll-smooth">
+<html lang="he-IL" dir="rtl" class="scroll-smooth">
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +28,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:title" content="בניית אתרים לעסקים קטנים בישראל | Nart (MorVane)" />
+  <meta property="og:image:alt" content="Morvane — סטודיו לבניית אתרים" />
+
   <meta
     property="og:description"
     content="אתר מודרני בעברית + SEO בסיסי + תשתית לאוטומציות. תהליך מסודר, שירות אישי, ותוצאה נקייה שמביאה פניות."
@@ -38,14 +40,15 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="בניית אתרים לעסקים קטנים בישראל | Nart (MorVane)" />
+  <meta name="twitter:image" content="https://www.morvane.co.il/og.jpg" />
+
   <meta
     name="twitter:description"
     content="אתרים בעברית (RTL), SEO בסיסי, וחיבור לאוטומציות — תהליך מסודר ושירות אישי."
   />
   
   <!-- Favicons (optional but recommended) -->
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Font (Hebrew-friendly) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +65,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ["Heebo", "ui-sans-serif", "system-ui", "Arial", "sans-serif"],
+            sans: ["Heebo", "ui-sans-serif", "system-ui", "Arial", "sans-serif", "Rubik"],
           },
           boxShadow: {
             soft: "0 10px 30px rgba(15, 23, 42, 0.08)",
@@ -78,17 +81,29 @@
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Nart (MoreVane)",
-      "url": "https://www.morevane.co.il/",
+      "name": "Nart (MorVane)",
+      "url": "https://www.morvane.co.il/",
       "areaServed": "IL",
       "inLanguage": "he-IL",
       "description": "בניית אתרים לעסקים קטנים בעברית (RTL), תשתית SEO, ושילוב אוטומציות.",
       "telephone": "+972-50-996-9920",
-      "email": "morvaneweb@gmial.com",
+      "email": "morvaneweb@gmail.com",
       "sameAs": [],
       "serviceType": ["בניית אתרים", "SEO בסיסי", "אוטומציות לעסקים"]
     }
   </script>
+  <script src="https://unpkg.com/lottie-web@5.10.2/build/player/lottie.min.js"></script>
+<style>
+  #logo-animation svg,
+  #logo-animation canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  section[id], main[id] { scroll-margin-top: 96px; }
+
+</style>
+
+
 </head>
 
 
@@ -112,726 +127,1086 @@
 
 
     <!-- Header -->
-    <header class="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-slate-200/60">
-      
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex items-center justify-between py-4">
 
-        <a href="#top" class="flex items-center gap-3">
-          
-
-  <img src="assets/images/buisnesslogodark.svg" alt="Morvane" class="h-10 w-auto" />
-
-
-  <div class="leading-tight">
-    <p class="text-sm font-bold">Nart madaji</p>
-    <p class="text-xs text-slate-600">
-  אתרים לעסקים קטנים · תדמית ולידים
-</p>
-
-  </div>
+<!-- Header (minimal overlay: icon left + hamburger right) -->
+<header class="fixed inset-x-0 top-0 z-50">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 pt-4">
+    <div class="flex items-center justify-between gap-3">
+      <!-- Site icon (left) -->
+      <a
+  href="#top"
+  class="pointer-events-auto inline-flex items-center justify-center"
+  aria-label="Morvane"
+>
+<img src="assets/icons/buisnessicondark.svg" alt="Morvane" class="h-9 w-auto" width="36" height="36" />
 </a>
 
-          <nav class="hidden md:flex items-center gap-6 text-sm text-slate-700">
-            <a class="hover:text-slate-900 transition" href="#services">שירותים</a>
-            <a class="hover:text-slate-900 transition" href="#portfolio">תיק עבודות</a>
-            <a class="hover:text-slate-900 transition" href="#before-after">לפני/אחרי</a>
-            <a class="hover:text-slate-900 transition" href="#pricing">תמחור</a>
-            <a class="hover:text-slate-900 transition" href="#contact">יצירת קשר</a>
-            <a class="hover:text-slate-900 transition" href="#process">תהליך</a>
-            <a
-              class="inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-4 py-2 font-semibold shadow-softer hover:bg-slate-800 transition"
-              href="#contact"
-            >
-              קבע/י שיחה
-            </a>
-          </nav>
+      <!-- Hamburger (right) - ONLY 3 lines, no circle/button styling -->
+      <button
+        id="mvMenuBtn"
+        type="button"
+        class="pointer-events-auto inline-flex items-center justify-center p-2 text-slate-900 hover:opacity-80 transition"
+        aria-label="פתיחת תפריט"
+        aria-controls="mvMenu"
+        aria-expanded="false"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
-          <a
-            href="#contact"
-            class="md:hidden inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-4 py-2 text-sm font-semibold shadow-softer hover:bg-slate-800 transition"
-          >
-            יצירת קשר
+  <!-- Fullscreen Menu -->
+  <div id="mvMenu" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-label="תפריט">
+    <div id="mvMenuBackdrop" class="absolute inset-0 bg-white/85 backdrop-blur-sm"></div>
+
+
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 pt-4">
+      <div class="flex items-center justify-between gap-3">
+        <button
+          id="mvMenuClose"
+          type="button"
+          class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full bg-white border border-slate-200 shadow-softer text-slate-900 hover:bg-slate-50 transition"
+          aria-label="סגירת תפריט"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <a href="#top" class="pointer-events-auto inline-flex h-10 w-10 items-center justify-center" aria-label="Morvane">
+          <img src="assets/icons/buisnessicondark.svg" alt="Morvane" class="h-6 w-auto" width="24" height="24" />
+        </a>
+      </div>
+
+      <nav class="mt-8 grid gap-2 text-base font-semibold text-slate-900">
+        <a href="#services" class="rounded-2xl bg-white/70 border border-slate-200 px-4 py-3 hover:bg-white transition">לכל השירותים והסברים</a>
+        <a href="#portfolio" class="rounded-2xl bg-white/70 border border-slate-200 px-4 py-3 hover:bg-white transition">תיק עבודות</a>
+        <a href="#project-scroll" class="rounded-2xl bg-white/70 border border-slate-200 px-4 py-3 hover:bg-white transition">אתר לדוגמה</a>
+        <a href="#pricing" class="rounded-2xl bg-white/70 border border-slate-200 px-4 py-3 hover:bg-white transition">תמחור</a>
+        <a href="#process" class="rounded-2xl bg-white/70 border border-slate-200 px-4 py-3 hover:bg-white transition">תהליך</a>
+        <a href="#contact" class="rounded-2xl bg-slate-900 text-white px-4 py-3 hover:bg-slate-800 transition">קבע/י שיחה</a>
+      </nav>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a href="tel:+972509969920" class="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-5 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition">
+          התקשר/י
+        </a>
+        <a href="mailto:morvaneweb@gmail.com" class="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-5 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition">
+          אימייל
+        </a>
+        <a href="https://wa.me/972509969920" class="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-5 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <main id="top">
+
+
+<!-- HERO (responsive: mobile centered, desktop offset) -->
+<section class="relative min-h-[100svh] bg-white overflow-hidden">
+  <!-- VIGNETTE -->
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+  <!-- base -->
+  <div class="absolute inset-0 bg-white"></div>
+
+  <!-- TOP HAZE (behind the header only) -->
+<div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-slate-950/[0.22] via-slate-950/[0.10] to-transparent"></div>
+  <!-- Lottie Logo Animation (Centered, Behind Text) -->
+  <div class="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+    <div
+      id="logo-animation"
+      class="
+        w-[70vmin] h-[70vmin] scale-[1.1] opacity-25 overflow-visible
+        max-sm:translate-y-[-12vh]
+        sm:w-[60vmin] sm:h-[60vmin] sm:scale-[1.35] sm:opacity-40 sm:translate-y-0
+        lg:w-[50vmin] lg:h-[50vmin] lg:scale-[1.6] lg:opacity-45
+      "
+    ></div>
+  </div>
+
+  <!-- soft bottom fade (keep center clean) -->
+  <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-white via-white/85 to-transparent"></div>
+
+  <!-- SIDE VIGNETTE (MUST BE LAST so it stays visible near the bottom) -->
+  <div class="absolute inset-y-0 left-0 w-[22%] bg-gradient-to-r from-slate-950/[0.18] to-transparent"></div>
+<div class="absolute inset-y-0 right-0 w-[22%] bg-gradient-to-l from-slate-950/[0.18] to-transparent"></div>
+</div>
+
+
+  <!-- TEXT BLOCK -->
+  <div
+    class="
+      absolute z-10 text-right
+      left-1/2 -translate-x-1/2
+      w-[min(1000px,92vw)] px-4
+      bottom-[20vh] sm:bottom-[16vh] lg:bottom-[12.8vh]
+      lg:left-[calc(50%-100px)]
+    "
+  >
+    <h1 class="mt-3 text-[2.25rem] sm:text-[2.625rem] lg:text-[3.375rem] font-semibold tracking-tight text-slate-900 leading-tight">
+      סטודיו לבניית אתרים — Morvane
+    </h1>
+
+    <p class="mt-3 text-sm sm:text-base text-slate-700 font-medium">
+      עיצוב אתרים / קידום אורגני (SEO)
+    </p>
+
+    <p class="mt-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+      מאתרי תדמית ועד דפי נחיתה—בונים חוויית משתמש חדה, מהירות גבוהה ותשתית SEO שמייצרת לידים באופן עקבי.
+    </p>
+  </div>
+
+  <!-- Social icons: centered on mobile/tablet, right on md+ -->
+  <div class="absolute z-20 bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 text-slate-900 md:left-auto md:translate-x-0 md:right-[calc(1.5rem+6px)]">
+    <a href="https://wa.me/972509969920" aria-label="WhatsApp" class="opacity-80 hover:opacity-100 transition">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20 11.5A8.5 8.5 0 1 1 8.1 3.4 8.5 8.5 0 0 1 20 11.5Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M7 19l.7-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9.3 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3 0 .5-.1.7l-.4.4c-.1.1-.1.3 0 .5.6 1.2 1.6 2.1 2.8 2.6.2.1.4.1.5 0l.5-.5c.2-.2.4-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6-.6.4-1.7.6-3.2 0-1.7-.7-3.8-2.5-4.9-4.8-1-2.1-.4-3.1 0-3.6Z" fill="currentColor" opacity=".9"/>
+      </svg>
+    </a>
+
+    <a href="mailto:morvaneweb@gmail.com" aria-label="Email" class="opacity-80 hover:opacity-100 transition">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M6 8l6 5 6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <a href="tel:+972509969920" aria-label="Phone" class="opacity-80 hover:opacity-100 transition">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7.5 3h2c.4 0 .8.3.9.7l.7 2.8c.1.4 0 .8-.3 1.1l-1 1a14 14 0 0 0 6 6l1-1c.3-.3.7-.4 1.1-.3l2.8.7c.4.1.7.5.7.9v2c0 .5-.4 1-1 1C10 20.8 3.2 14 3 4c0-.6.5-1 1-1h3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- subtle scroll hint -->
+  <div class="absolute z-10 inset-x-0 flex items-center justify-center gap-2 text-xs text-slate-500 bottom-10 max-sm:bottom-16">
+    <span>גלול</span>
+    <span class="mv-float inline-flex" aria-hidden="true">↓</span>
+  </div>
+</section>
+
+
+
+
+
+
+ <!-- SERVICES (Service Index + CSS-only Preview, aligned with HERO aesthetic) -->
+<section id="services" class="relative bg-white py-14 sm:py-16 overflow-hidden">
+  <!-- EDGE VIGNETTE (sides only) -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+    <div class="absolute inset-y-0 left-0 w-[22%] bg-gradient-to-r from-slate-950/[0.18] to-transparent"></div>
+    <div class="absolute inset-y-0 right-0 w-[22%] bg-gradient-to-l from-slate-950/[0.18] to-transparent"></div>
+
+  </div>
+
+
+
+
+
+  <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+    <header class="max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">שירותים</h2>
+      <p class="mt-3 text-base sm:text-lg text-slate-700">
+        תפריט שירותים קצר — בוחרים, מבינים מהר, ואז נכנסים לעמוד המלא.
+      </p>
+    </header>
+
+    <!-- Radios (CSS-only state) -->
+<input checked type="radio" name="svc" id="s1" class="sr-only" />
+<input type="radio" name="svc" id="s2" class="sr-only" />
+<input type="radio" name="svc" id="s3" class="sr-only" />
+<input type="radio" name="svc" id="s4" class="sr-only" />
+<input type="radio" name="svc" id="s5" class="sr-only" />
+<input type="radio" name="svc" id="s6" class="sr-only" />
+<input type="radio" name="svc" id="s7" class="sr-only" />
+<input type="radio" name="svc" id="s8" class="sr-only" />
+
+
+    <div class="mt-10 flex flex-col gap-10 lg:flex-row lg:items-start">
+      <!-- INDEX (RTL: right column) -->
+    <div class="lg:w-1/2">
+        <div class="border-t border-slate-200">
+          <!-- Item 1 -->
+          <label for="s1" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">01</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  דף נחיתה
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  עמוד אחד ממוקד שמוביל לפנייה (WhatsApp / טופס / שיחה).
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 2 -->
+          <label for="s2" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">02</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  אתר תדמית (1–5 עמודים)
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  אתר שמציג שירותים, אמון וקריאה לפעולה — נקי ומהיר.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 3 -->
+          <label for="s3" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">03</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  הוספת עמודים לאתר קיים (סטטי)
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  הוספת עמודי שירות/עיר/FAQ לאתרי HTML/CSS/JS קיימים.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 4 -->
+          <label for="s4" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">04</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  עיצוב מחדש לאתר קיים (סטטי)
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  רענון ויזואלי והיררכיה — בלי לשנות טכנולוגיה (HTML/CSS/JS).
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 5 -->
+          <label for="s5" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">05</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  SEO On-page + Technical
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  מטא/כותרות/קישורים + sitemap/robots/schema/canonical.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 6 -->
+          <label for="s6" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">06</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  מאמרים + עמוד בלוג
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  כתיבה + תבנית בלוג נקייה שמאפשרת לפרסם בצורה עקבית.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 7 -->
+          <label for="s7" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">07</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  Google Business Profile
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  אופטימיזציה לחשבון העסק בגוגל לשיפור נראות מקומית.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+
+          <!-- Item 8 -->
+          <label for="s8" class="group block cursor-pointer border-b border-slate-200 py-6">
+            <div class="flex items-start justify-between gap-6">
+              <div class="min-w-0">
+                <p class="text-xs text-slate-500 tracking-wide">08</p>
+                <p class="mt-1 text-base sm:text-lg font-semibold text-slate-900">
+                  מדידה + טפסים + אוטומציה בסיסית
+                </p>
+                <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                  GA4/GTM + טפסים + חיבור מייל/Sheets/Make לפי צורך.
+                </p>
+              </div>
+              <span class="mt-2 text-slate-400 group-hover:text-slate-900 transition">←</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="mt-6">
+          <!-- placeholder כרגע (סטטי/רק כדי לא לשבור) -->
+<a href="#services" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:opacity-80 transition">
+  לכל השירותים והסברים
+  <span aria-hidden="true">←</span>
+</a>
+
+        </div>
+      </div>
+
+      <!-- PREVIEW (left column) -->
+      <div class="lg:w-1/2">
+        <div class="relative border border-slate-200 bg-white p-6 sm:p-8">
+          <!-- subtle indicator line -->
+          <div aria-hidden="true" class="absolute right-0 top-0 h-full w-px bg-slate-200"></div>
+
+          <!-- default helper -->
+          <p class="text-xs text-slate-500">תצוגה מקדימה</p>
+
+          <!-- PREVIEW 1 -->
+          <div class="svc-preview p1 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">01</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">דף נחיתה</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> מסר חד + CTA ברור + חיבור WhatsApp/טופס.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> קמפיינים/שירות אחד/הצעה ממוקדת.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> קצר — תלוי חומרים וטקסטים.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 2 -->
+          <div class="svc-preview p2 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">02</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">אתר תדמית (1–5 עמודים)</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> מבנה מסודר, עמודי שירות, אמון, וניווט נקי.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> עסק מקומי שרוצה נראות פרימיום ויותר פניות.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> בינוני — לפי כמות עמודים ותוכן.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 3 -->
+          <div class="svc-preview p3 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">03</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">הוספת עמודים לאתר קיים (סטטי)</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> עמודים חדשים שנראים כמו האתר הקיים ושומרים על קוד נקי.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> מי שכבר יש לו אתר סטטי ורוצה להתרחב.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> לפי מספר עמודים ורמת התוכן.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 4 -->
+          <div class="svc-preview p4 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">04</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">עיצוב מחדש לאתר קיים (סטטי)</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> שפה ויזואלית נקייה יותר + היררכיה שמכוונת לפעולה.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> אתר מיושן/עמוס שרוצה להיראות מקצועי ועדכני.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> תלוי בהיקף העמודים והקוד.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 5 -->
+          <div class="svc-preview p5 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">05</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">SEO On-page + Technical</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> סדר בכותרות/מטא + Schema + Sitemap/Robots.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> עסק שרוצה תשתית נכונה כדי להתחיל לצמוח אורגנית.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> מהיר יחסית — תלוי במספר עמודים.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 6 -->
+          <div class="svc-preview p6 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">06</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">מאמרים + עמוד בלוג</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> תבנית בלוג נקייה + מאמרים שמביאים תנועה לאורך זמן.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> עסקים עם שאלות חוזרות/תחום תחרותי.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> משתנה — לפי כמות מאמרים.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 7 -->
+          <div class="svc-preview p7 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">07</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Google Business Profile</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> אופטימיזציה לפרופיל: קטגוריות, תיאור, תמונות, פוסטים.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> עסק מקומי שרוצה יותר חשיפה במפות ובחיפוש.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> מהיר — תלוי בזמינות החומרים.</p>
+            </div>
+          </div>
+
+          <!-- PREVIEW 8 -->
+          <div class="svc-preview p8 mt-4 hidden">
+            <p class="text-xs text-slate-500 tracking-wide">08</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">מדידה + טפסים + אוטומציה בסיסית</h3>
+
+            <div class="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+              <p><span class="font-semibold text-slate-900">מה מקבלים:</span> טפסים שעובדים + חיבור לדוחות/מייל + מדידה בסיסית.</p>
+              <p><span class="font-semibold text-slate-900">למי מתאים:</span> מי שרוצה לדעת מאיפה מגיעות פניות ולייעל.</p>
+              <p><span class="font-semibold text-slate-900">זמן טיפוסי:</span> קצר — לפי כמות חיבורים.</p>
+            </div>
+          </div>
+
+          <!-- inline CSS for checked states + subtle transitions -->
+          <style>
+            /* show selected preview */
+            #s1:checked ~ * .svc-preview.p1,
+            #s2:checked ~ * .svc-preview.p2,
+            #s3:checked ~ * .svc-preview.p3,
+            #s4:checked ~ * .svc-preview.p4,
+            #s5:checked ~ * .svc-preview.p5,
+            #s6:checked ~ * .svc-preview.p6,
+            #s7:checked ~ * .svc-preview.p7,
+            #s8:checked ~ * .svc-preview.p8 { display: block; }
+
+            /* subtle show animation */
+            .svc-preview { animation: mvFadeUp .22s ease-out both; }
+            @keyframes mvFadeUp {
+              from { opacity: 0; transform: translateY(6px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+
+            /* highlight selected label without cards */
+            #s1:checked ~ * label[for="s1"],
+            #s2:checked ~ * label[for="s2"],
+            #s3:checked ~ * label[for="s3"],
+            #s4:checked ~ * label[for="s4"],
+            #s5:checked ~ * label[for="s5"],
+            #s6:checked ~ * label[for="s6"],
+            #s7:checked ~ * label[for="s7"],
+            #s8:checked ~ * label[for="s8"] { background: rgba(15, 23, 42, 0.03); }
+
+            /* mobile: preview below index */
+            @media (max-width: 1023px) {
+              .svc-preview-wrap { margin-top: 1.25rem; }
+            }
+          </style>
+        </div>
+
+        <div class="mt-6">
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:opacity-80 transition">
+            רוצה המלצה מה מתאים לך?
+            <span aria-hidden="true">←</span>
           </a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+   <!-- PROCESS (Sticky storytelling — bigger type + stable scrollspy + one-time fade-in) -->
+<section id="process" class="relative bg-white overflow-hidden py-16 sm:py-20">
+    <!-- VIGNETTE (Level 2) -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-white"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_70%,rgba(2,6,23,0.10)_100%)]"></div>
+    <div class="absolute inset-y-0 left-0 w-[14%] bg-gradient-to-r from-slate-950/[0.10] to-transparent"></div>
+    <div class="absolute inset-y-0 right-0 w-[14%] bg-gradient-to-l from-slate-950/[0.10] to-transparent"></div>
+  </div>
+
+
+    <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+
+    <header class="max-w-3xl">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">איך זה עובד</h2>
+      <p class="mt-4 text-lg sm:text-xl text-slate-700 leading-relaxed">
+        תהליך קצר ושקוף — עם שלבים ברורים, בלי רעש.
+      </p>
     </header>
 
-    <main id="top">
-      <!-- HERO -->
-      <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-16 pb-10 sm:pb-14">
-  <div class="relative overflow-hidden rounded-[2rem] border border-slate-300 bg-slate-100 shadow-soft">
-    <!-- Hero background (soft gray) -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-200/80 via-slate-100 to-slate-100"></div>
-      <div class="absolute inset-0 bg-gradient-to-l from-white/60 via-transparent to-transparent"></div>
-    </div>
+    <div class="mt-12 flex flex-col lg:flex-row gap-10 lg:gap-16">
+      <!-- INDEX (RTL: right side on desktop) -->
+    <aside class="mv-proc-aside lg:w-[26rem] lg:sticky lg:top-28 lg:max-h-[calc(100svh-7rem)] lg:overflow-auto lg:overscroll-contain self-start">
+        <p class="text-xs text-slate-500">אינדקס שלבים</p>
 
-    <div class="relative p-6 sm:p-10 lg:p-12">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div>
-          <p class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-medium text-slate-700 border border-slate-300">
-            <span class="h-2 w-2 rounded-full bg-slate-900"></span>
-            סטנדרט יוקרתי • Mobile-first • RTL בעברית
-          </p>
+        <div class="relative mt-4 rounded-2xl border border-slate-200 bg-white overflow-hidden">
+          <!-- vertical line -->
+          <div aria-hidden="true" class="mv-proc-line absolute right-[14px] top-6 bottom-6 w-px bg-slate-200"></div>
 
-          <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
-           בונה אתרים שמביאים פניות לעסקים קטנים — בעברית, מהיר, יפה ונקי 
-          </h1>
+          <nav class="divide-y divide-slate-200" aria-label="שלבי תהליך">
+            <a href="#p1" class="mv-proc-link group relative block py-6 pr-12">
+              <span aria-hidden="true" class="mv-dot absolute right-[10px] top-8 h-2.5 w-2.5 rounded-full bg-slate-300 transition"></span>
 
-          <p class="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed max-w-xl">
-            אני <strong>נארת מדאג'י</strong> בונה אתרי תדמית ואתרי לידים עם בסיס SEO חזק, מהיר
-            וחוויית מובייל מעולה עם הדגש על עיצוב אישי — בתהליך מסודר ושירות אישי לאורך כל הדרך.
-          </p>
-
-          <p class="mt-3 text-sm text-slate-600 max-w-xl">
-            מתאים לעסקים קטנים: מסעדות, נותני שירות, קליניקות ועסקים מקומיים — עם WhatsApp, טלפון וטופס שמייצר פניות.
-          </p>
-
-          <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <!-- Primary CTA -->
-  <a
-    href="https://wa.me/972509969920"
-    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 text-white px-7 py-3.5 font-semibold shadow-[0_10px_25px_-10px_rgba(37,99,235,0.6)] hover:bg-blue-700 transition"
-  >
-    דבר/י איתי ב-WhatsApp
-  </a>
-
-  <!-- Secondary CTA -->
-  <a
-    href="#portfolio"
-    class="inline-flex items-center justify-center rounded-2xl px-7 py-3.5 font-semibold text-slate-900 border border-slate-300 bg-white/70 hover:bg-white transition"
-  >
-    לראות עבודות
-  </a>
-</div>
-
-          <p class="mt-3 text-sm text-slate-600 max-w-xl">
-            מענה מהיר • בלי התחייבות • תהליך מסודר ושירות אישי
-          </p>
-
-          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div class="rounded-2xl bg-white/85 border border-slate-300 p-4 shadow-softer">
-              <p class="text-xs text-slate-600">גישה</p>
-              <p class="mt-1 font-bold text-slate-900">נקי & ממיר</p>
-            </div>
-            <div class="rounded-2xl bg-white/85 border border-slate-300 p-4 shadow-softer">
-              <p class="text-xs text-slate-600">תוצאה</p>
-              <p class="mt-1 font-bold text-slate-900">נראות פרימיום</p>
-            </div>
-            <div class="rounded-2xl bg-white/85 border border-slate-300 p-4 shadow-softer col-span-2 sm:col-span-1">
-              <p class="text-xs text-slate-600">מיקוד</p>
-              <p class="mt-1 font-bold text-slate-900">SEO בעברית</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Side images unchanged -->
-        <div class="grid gap-4 sm:grid-cols-2">
-          <figure class="overflow-hidden rounded-3xl bg-white border border-slate-300 shadow-soft">
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-              alt="תמונה של עבודה מקצועית בסביבה מודרנית"
-              class="h-56 sm:h-64 w-full object-cover"
-              loading="lazy"
-            />
-            <figcaption class="p-4">
-              <p class="text-sm font-semibold text-slate-900">מראה נקי</p>
-              <p class="mt-1 text-xs text-slate-600">הדגשה ויזואלית שמביאה אמון.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="overflow-hidden rounded-3xl bg-white border border-slate-300 shadow-soft">
-            <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-              alt="תמונה של צוות או לקוחות עם אווירה מקצועית"
-              class="h-56 sm:h-64 w-full object-cover"
-              loading="lazy"
-            />
-            <figcaption class="p-4">
-              <p class="text-sm font-semibold text-slate-900">מסר ברור</p>
-              <p class="mt-1 text-xs text-slate-600">מבנה שמוביל לפעולה.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-      <!-- SERVICES -->
-<section id="services" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
-  <div class="flex flex-col gap-3">
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-      בניית אתרים לעסקים קטנים — אתר תדמית/לידים, SEO וחוויית מובייל
-    </h2>
-
-    <p class="text-slate-700 max-w-3xl leading-relaxed">
-      אני בונה <strong>אתרי תדמית ואתרי לידים</strong> שמסבירים ברור מה העסק עושה ומובילים לפנייה.
-      כל אתר מגיע עם <strong>בסיס SEO מהיר</strong>, חוויית מובייל מעולה, ועיצוב אישי — בתהליך מסודר ושירות אישי לאורך כל הדרך.
-    </p>
-
-    <!-- little trust line -->
-    <div class="mt-2 flex flex-wrap gap-2 text-xs">
-      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">RTL בעברית</span>
-      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">טעינה מהירה</span>
-      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">נגישות בסיסית</span>
-      <span class="rounded-full bg-white/70 border border-slate-200 px-3 py-1 text-slate-700">כפתורי WhatsApp/טלפון</span>
-    </div>
-  </div>
-
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
-      <div class="flex items-start gap-3">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
-          <!-- icon -->
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <div>
-          <h3 class="font-bold">אתר תדמית/לידים</h3>
-          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
-            מבנה ברור שמסביר מה אתה מציע, מציג תמונות, ומוביל לפנייה עם CTA חזק.
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
-      <div class="flex items-start gap-3">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
-          <!-- icon -->
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M7 7l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M17 7L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <div>
-          <h3 class="font-bold">SEO בסיסי ומהיר</h3>
-          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
-            כותרות נכונות (H1/H2), תיאורים, מבנה נקי, וקישורים שמאפשרים לגוגל להבין את האתר.
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
-      <div class="flex items-start gap-3">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
-          <!-- icon -->
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 7h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M9 10h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 14h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <div>
-          <h3 class="font-bold">מובייל קודם</h3>
-          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
-            חוויית מובייל מעולה: טקסט קריא, כפתורים גדולים, וגלילה נעימה שמביאה המרות.
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl transition">
-      <div class="flex items-start gap-3">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-softer">
-          <!-- icon -->
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 7l-8 8-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 21h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <div>
-          <h3 class="font-bold">תהליך מסודר</h3>
-          <p class="mt-1 text-sm text-slate-600 leading-relaxed">
-            איסוף חומרים → עיצוב → בנייה → בדיקות → עלייה לאוויר. אתה יודע תמיד מה השלב הבא.
-          </p>
-        </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="mt-8 flex flex-col sm:flex-row gap-3">
-    <a
-      href="#contact"
-      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-6 py-3 font-semibold shadow-softer hover:bg-slate-800 transition"
-    >
-      בוא נבנה אתר שמביא פניות
-    </a>
-    <a
-      href="#portfolio"
-      class="inline-flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200 px-6 py-3 font-semibold text-slate-900 shadow-softer hover:bg-white transition"
-    >
-      לראות דוגמאות
-    </a>
-  </div>
-</section>
-
-    <!-- PROCESS -->
-<section id="process" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
-  <div class="flex flex-col gap-3">
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">איך זה עובד</h2>
-    <p class="text-slate-700 max-w-2xl leading-relaxed">
-      תהליך ברור ושקוף — עם שלבים מסודרים ואפשרות להעמקה בכל אחד מהם.
-    </p>
-  </div>
-
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-    <!-- Step 1 -->
-    <details class="group rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
-      <summary class="cursor-pointer list-none">
-        <p class="text-xs text-slate-600">שלב 1</p>
-        <h3 class="mt-1 font-bold flex items-center justify-between">
-          שיחת היכרות והצעת אתר
-          <span class="text-slate-400 transition group-open:rotate-180">⌄</span>
-        </h3>
-        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-          הבנה מה צריך לבנות ומה הולך לקרות בתהליך.
-        </p>
-      </summary>
-
-      <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-        בשיחה נדבר על:
-        <ul class="mt-2 list-disc pr-5 space-y-1">
-          <li>איזה אתר מתאים לך (תדמית / רב־עמודים)</li>
-          <li>מה המטרה של האתר</li>
-          <li>לו״ז משוער ומה נדרש ממך</li>
-        </ul>
-      </div>
-    </details>
-
-    <!-- Step 2 -->
-    <details class="group rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
-      <summary class="cursor-pointer list-none">
-        <p class="text-xs text-slate-600">שלב 2</p>
-        <h3 class="mt-1 font-bold flex items-center justify-between">
-          חוזה + שאלון עומק
-          <span class="text-slate-400 transition group-open:rotate-180">⌄</span>
-        </h3>
-        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-          סגירת תנאים ואיסוף מידע בצורה מסודרת.
-        </p>
-      </summary>
-
-      <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-        אחרי סגירת התנאים:
-        <ul class="mt-2 list-disc pr-5 space-y-1">
-          <li>נחתם חוזה ומוסדרת מקדמה</li>
-          <li>נשלח שאלון (Google Forms)</li>
-          <li>השאלון עוזר לכתיבת טקסטים ו-SEO</li>
-        </ul>
-      </div>
-    </details>
-
-    <!-- Step 3 -->
-    <details class="group rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
-      <summary class="cursor-pointer list-none">
-        <p class="text-xs text-slate-600">שלב 3</p>
-        <h3 class="mt-1 font-bold flex items-center justify-between">
-          בנייה בפועל
-          <span class="text-slate-400 transition group-open:rotate-180">⌄</span>
-        </h3>
-        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-          בנייה לפי התוכן והכיוון שסוכם.
-        </p>
-      </summary>
-
-      <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-        הבנייה כוללת:
-        <ul class="mt-2 list-disc pr-5 space-y-1">
-          <li>גישה של Mobile-First</li>
-          <li>מבנה ברור והיררכיה נכונה</li>
-          <li>גרסה ראשונית לצפייה</li>
-        </ul>
-      </div>
-    </details>
-
-    <!-- Step 4 -->
-    <details class="group rounded-3xl bg-white border border-slate-200 shadow-soft p-6">
-      <summary class="cursor-pointer list-none">
-        <p class="text-xs text-slate-600">שלב 4</p>
-        <h3 class="mt-1 font-bold flex items-center justify-between">
-          בדיקה, תיקונים וסיום
-          <span class="text-slate-400 transition group-open:rotate-180">⌄</span>
-        </h3>
-        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-          מעבר משותף לפני עלייה לאוויר.
-        </p>
-      </summary>
-
-      <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-        בשלב הזה:
-        <ul class="mt-2 list-disc pr-5 space-y-1">
-          <li>בדיקה מרוכזת של האתר</li>
-          <li>תיקונים לפי ההערות</li>
-          <li>סיום הפרויקט והחלטה על המשך</li>
-        </ul>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-
-
-
-     <!-- PORTFOLIO (3–4 projects, web design focused) -->
-<section id="portfolio" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
-  <div class="flex flex-col gap-3">
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">תיק עבודות</h2>
-    <p class="text-slate-700 max-w-2xl leading-relaxed">
-      כמה דוגמאות לאתרים שבניתי — דגש על מהירות, היררכיה ברורה והתאמה למובייל.
-      <span class="font-semibold">החלף את התמונות לצילומי מסך אמיתיים</span> כדי שזה יעבוד הכי חזק.
-    </p>
-  </div>
-
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <!-- Project 1 -->
-    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
-      <!-- Add image here: screenshot / mockup of a real website -->
-      <img
-        src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=80"
-        alt="תיק עבודות: אתר תדמית לעסק קטן — דוגמה"
-        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
-        loading="lazy"
-      />
-      <div class="p-4">
-        <p class="text-sm font-semibold">אתר תדמית לעסק מקומי</p>
-        <p class="mt-1 text-xs text-slate-600">דגש על מסר ברור, CTA בולט והתאמה מלאה למובייל.</p>
-      </div>
-    </a>
-
-    <!-- Project 2 -->
-    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
-      <!-- Add image here: before/after or redesign screenshot -->
-      <img
-        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
-        alt="תיק עבודות: עמוד נחיתה ממיר — דוגמה"
-        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
-        loading="lazy"
-      />
-      <div class="p-4">
-        <p class="text-sm font-semibold">עמוד נחיתה ממיר</p>
-        <p class="mt-1 text-xs text-slate-600">מבנה: תועלות → הוכחות → שאלות → טופס פנייה.</p>
-      </div>
-    </a>
-
-    <!-- Project 3 -->
-    <a href="#contact" class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
-      <!-- Add image here: mobile-first UI screenshot -->
-      <img
-        src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80"
-        alt="תיק עבודות: עיצוב נקי ומודרני לאתר שירותים — דוגמה"
-        class="h-56 w-full object-cover transition group-hover:scale-[1.02]"
-        loading="lazy"
-      />
-      <div class="p-4">
-        <p class="text-sm font-semibold">שדרוג אתר קיים (Re-Design)</p>
-        <p class="mt-1 text-xs text-slate-600">שיפור היררכיה, קריאות ומהירות — בלי רעש מיותר.</p>
-      </div>
-    </a>
-  </div>
-
-  <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between rounded-3xl border border-slate-200 bg-white p-5">
-    <p class="text-sm text-slate-700">
-      רוצה לראות דוגמאות רלוונטיות לעסק שלך?
-      <span class="font-semibold">אגיש לך 2–3 כיוונים</span> לפני שמתחילים.
-    </p>
-    <a
-      href="#contact"
-      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-    >
-      דברו איתי
-    </a>
-  </div>
-</section>
-
-
-      <!-- BEFORE / AFTER – Mobile-First Process -->
-<section id="before-after" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
-  <div class="flex flex-col gap-3">
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">מובייל קודם — לפני / אחרי</h2>
-    <p class="text-slate-700 max-w-2xl leading-relaxed">
-      כך אני בונה אתרים: מתחילים ממסך מובייל (החשוב ביותר), ואז מרחיבים לדסקטופ.
-      זה מבטיח אתר ברור, מהיר ונוח — בדיוק איפה שהלקוחות שלך באמת נמצאים.
-    </p>
-  </div>
-
-  <div class="mt-8 grid gap-4 md:grid-cols-2">
-    <!-- BEFORE: Mobile wireframe / early build -->
-    <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
-      <div class="p-4 pb-0 flex items-center justify-between gap-3">
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-          שלב 1 — מובייל (בסיס)
-        </span>
-        <span class="text-xs text-slate-500">Mobile-first</span>
-      </div>
-
-      <!-- Add image here: your mobile screenshot (early build / mobile layout) -->
-      <img
-        src="assets/images/mobilevisual.png"
-        alt="שלב 1: מבנה מובייל נקי וברור — דוגמה"
-        class="max-h-80 w-auto mx-auto object-contain"
-        loading="lazy"
-      />
-
-      <figcaption class="p-4">
-        <p class="text-sm text-slate-600">
-          בונים היררכיה, טיפוגרפיה ו-CTA למסך קטן — כדי שהכל יהיה ברור ומהיר.
-        </p>
-      </figcaption>
-    </figure>
-
-    <!-- AFTER: Desktop polished -->
-    <figure class="overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-soft">
-      <div class="p-4 pb-0 flex items-center justify-between gap-3">
-        <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-          שלב 2 — דסקטופ (הרחבה)
-        </span>
-        <span class="text-xs text-slate-500">Responsive</span>
-      </div>
-
-      <!-- Add image here: your desktop screenshot (final / desktop layout) -->
-      <img
-        src="assets\images\desktopvisual.png"
-        alt="שלב 2: גרסת דסקטופ מסודרת ומלאה — דוגמה"
-        class="h-64 sm:h-80 w-full object-cover"
-        loading="lazy"
-      />
-
-      <figcaption class="p-4">
-        <p class="text-sm text-slate-600">
-          אחרי שהמובייל מושלם — מרחיבים לגריד דסקטופ, מוסיפים תוכן ותמונות בלי לפגוע במהירות.
-        </p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="mt-6 grid gap-3 sm:grid-cols-3">
-    <div class="rounded-3xl border border-slate-200 bg-white p-5">
-      <p class="text-sm font-semibold">יותר פניות</p>
-      <p class="mt-1 text-sm text-slate-600">CTA ברור ונגיש באגודל — בדיוק איפה שלוחצים.</p>
-    </div>
-    <div class="rounded-3xl border border-slate-200 bg-white p-5">
-      <p class="text-sm font-semibold">מהירות גבוהה</p>
-      <p class="mt-1 text-sm text-slate-600">מבנה נקי קודם, ואז מוסיפים “שכבות” בצורה חכמה.</p>
-    </div>
-    <div class="rounded-3xl border border-slate-200 bg-white p-5">
-      <p class="text-sm font-semibold">חוויית משתמש</p>
-      <p class="mt-1 text-sm text-slate-600">הטקסט קריא, הכפתורים בגודל נכון, והמסר ברור.</p>
-    </div>
-  </div>
-
-  <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between rounded-3xl border border-slate-200 bg-white p-5">
-    <p class="text-sm text-slate-700">
-      רוצה שאבנה לך אתר שמרגיש מעולה במובייל ומביא פניות?
-    </p>
-    <a
-      href="#contact"
-      class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-    >
-      בוא נתחיל
-    </a>
-  </div>
-</section>
-      <!--- pricing /--->
-       
-  <!-- כל תוכן התמחור כאן -->
-  <section id="pricing" class="mx-auto max-w-6xl px-4 sm:px-6 py-14">
-  <div class="rounded-3xl bg-slate-900 text-white p-8 sm:p-12 shadow-soft">
-    
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-      רוצה להבין כמה זה עולה?
-    </h2>
-
-    <p class="mt-3 text-slate-300 max-w-2xl leading-relaxed">
-      הכנתי תמחור ברור ושקוף – בלי אותיות קטנות, ועם חבילות שמתאימות לעסקים קטנים.
-    </p>
-
-    <div class="mt-6">
-      <a
-        href="pricing.html"
-        class="inline-flex items-center justify-center rounded-2xl bg-white text-slate-900 px-6 py-3 font-semibold hover:bg-slate-100 transition"
-      >
-        לצפייה בתמחור
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-      <!-- STRONG CTA (dark) -->
-      <section class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
-        <div class="rounded-[2rem] bg-slate-950 text-white overflow-hidden shadow-soft">
-          <div class="relative">
-            <div class="absolute inset-0 opacity-35">
-              <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80"
-                alt="רקע כהה של סביבה מקצועית לקריאה לפעולה"
-                class="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-l from-slate-950 via-slate-950/80 to-slate-950/40"></div>
-
-            <div class="relative p-8 sm:p-12">
-              <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
-                <div>
-                  <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">בוא/י נבנה נראות שמוכרת</h2>
-                  <p class="mt-3 text-slate-200 leading-relaxed max-w-2xl">
-                    רוצה אתר תדמית יוקרתי בעברית עם מקום לתמונות? דבר/י איתי ואחזור אליך עם כיוון ברור ותמחור.
-                  </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3 lg:justify-end">
-                  <a
-                    href="#contact"
-                    class="inline-flex items-center justify-center rounded-2xl bg-white text-slate-950 px-6 py-3 font-semibold shadow-softer hover:bg-slate-100 transition"
-                  >
-                    דברו איתי עכשיו
-                  </a>
-                  <a
-                    href="#portfolio"
-                    class="inline-flex items-center justify-center rounded-2xl bg-white/10 border border-white/15 px-6 py-3 font-semibold text-white hover:bg-white/15 transition"
-                  >
-                    לראות גלריה
-                  </a>
-                </div>
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="text-sm text-slate-500">01</span>
+                <span class="text-lg sm:text-xl font-semibold text-slate-900">שיחת היכרות</span>
               </div>
 
-              <div class="mt-10 grid gap-3 sm:grid-cols-3">
-                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
-                  <p class="text-xs text-slate-200">זמן תגובה</p>
-                  <p class="mt-1 font-bold">מהיר</p>
-                </div>
-                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
-                  <p class="text-xs text-slate-200">סגנון</p>
-                  <p class="mt-1 font-bold">פרימיום</p>
-                </div>
-                <div class="rounded-2xl bg-white/10 border border-white/15 p-4">
-                  <p class="text-xs text-slate-200">התאמה</p>
-                  <p class="mt-1 font-bold">RTL + מובייל</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
-        <div class="rounded-[2rem] bg-white border border-slate-200 shadow-soft p-6 sm:p-10">
-          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">יצירת קשר</h2>
-              <p class="mt-3 text-slate-700 leading-relaxed max-w-xl">
-                שלחו הודעה בוואטסאפ, התקשרו, או כתבו באימייל — ונחזור אליכם בהקדם.
+              <p class="mt-2 text-base text-slate-700 leading-relaxed">
+                מגדירים מטרה, מסר וקהל — ומחליטים מה בונים.
               </p>
+            </a>
 
-              <div class="mt-6 grid gap-3">
-                <!-- WhatsApp -->
-                <a
-                  href="https://wa.me/972501234567"
-                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
-                  aria-label="שליחת הודעת וואטסאפ"
-                >
-                  <div class="flex items-center gap-3">
-                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white">
-                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M20 11.5A8.5 8.5 0 1 1 8.1 3.4 8.5 8.5 0 0 1 20 11.5Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M7 19l.7-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M9.3 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3 0 .5-.1.7l-.4.4c-.1.1-.1.3 0 .5.6 1.2 1.6 2.1 2.8 2.6.2.1.4.1.5 0l.5-.5c.2-.2.4-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6-.6.4-1.7.6-3.2 0-1.7-.7-3.8-2.5-4.9-4.8-1-2.1-.4-3.1 0-3.6Z" fill="currentColor" opacity=".9"/>
-                      </svg>
-                    </span>
-                    <div>
-                      <p class="font-bold">WhatsApp</p>
-                      <p class="text-sm text-slate-600">שליחת הודעה מהירה</p>
-                    </div>
-                  </div>
-                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
-                </a>
+            <a href="#p2" class="mv-proc-link group relative block py-6 pr-12">
+              <span aria-hidden="true" class="mv-dot absolute right-[10px] top-8 h-2.5 w-2.5 rounded-full bg-slate-300 transition"></span>
 
-                <!-- Phone -->
-                <a
-                  href="tel:+972509969920"
-                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
-                  aria-label="שיחת טלפון"
-                >
-                  <div class="flex items-center gap-3">
-                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
-                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M7.5 3h2c.4 0 .8.3.9.7l.7 2.8c.1.4 0 .8-.3 1.1l-1 1a14 14 0 0 0 6 6l1-1c.3-.3.7-.4 1.1-.3l2.8.7c.4.1.7.5.7.9v2c0 .5-.4 1-1 1C10 20.8 3.2 14 3 4c0-.6.5-1 1-1h3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                    <div>
-                      <p class="font-bold">טלפון</p>
-                      <p class="text-sm text-slate-600">+972-50-996-9920</p>
-                    </div>
-                  </div>
-                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
-                </a>
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="text-sm text-slate-500">02</span>
+                <span class="text-lg sm:text-xl font-semibold text-slate-900">איסוף חומרים</span>
+              </div>
 
-                <!-- Email -->
-                <a
-                  href="mailto:morvaneweb@gmail.com"
-                  class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
-                  aria-label="שליחת אימייל"
-                >
-                  <div class="flex items-center gap-3">
-                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white">
-                      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M6 8l6 5 6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                    <div>
-                      <p class="font-bold">אימייל</p>
-                      <p class="text-sm text-slate-600">morvaneweb@gmail.com</p>
-                    </div>
-                  </div>
-                  <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
-                </a>
+              <p class="mt-2 text-base text-slate-700 leading-relaxed">
+                שאלון קצר + נכסים (לוגו/תמונות/דוגמאות) כדי שנראה פרימיום.
+              </p>
+            </a>
+
+            <a href="#p3" class="mv-proc-link group relative block py-6 pr-12">
+              <span aria-hidden="true" class="mv-dot absolute right-[10px] top-8 h-2.5 w-2.5 rounded-full bg-slate-300 transition"></span>
+
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="text-sm text-slate-500">03</span>
+                <span class="text-lg sm:text-xl font-semibold text-slate-900">בנייה (Mobile-first)</span>
+              </div>
+
+              <p class="mt-2 text-base text-slate-700 leading-relaxed">
+                מבנה נקי, טיפוגרפיה, מהירות ותשתית SEO.
+              </p>
+            </a>
+
+            <a href="#p4" class="mv-proc-link group relative block py-6 pr-12">
+              <span aria-hidden="true" class="mv-dot absolute right-[10px] top-8 h-2.5 w-2.5 rounded-full bg-slate-300 transition"></span>
+
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="text-sm text-slate-500">04</span>
+                <span class="text-lg sm:text-xl font-semibold text-slate-900">בדיקות ועלייה לאוויר</span>
+              </div>
+
+              <p class="mt-2 text-base text-slate-700 leading-relaxed">
+                תיקוני דיוק, חיבור לידים, ואז השקה מסודרת.
+              </p>
+            </a>
+          </nav>
+        </div>
+
+        <div class="mt-7">
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:opacity-80 transition">
+            רוצה שאכוון אותך לשלב הנכון?
+            <span aria-hidden="true">←</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="flex-1 mv-steps">
+        <article id="p1" class="mv-step scroll-mt-32 border-t border-slate-200 pt-10 first:border-t-0 first:pt-0">
+          <p class="text-sm text-slate-500">שלב 01</p>
+          <h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">שיחת היכרות</h3>
+
+          <p class="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
+            מגדירים יחד מה האתר צריך לעשות (לידים/תדמית), ומה חייב להופיע כדי שזה יעבוד.
+          </p>
+
+          <ul class="mt-6 space-y-3 text-base text-slate-700">
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>מטרה + קהל יעד</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>מבנה עמודים/סקשנים</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>החלטה על דף נחיתה / רב־עמודים</li>
+          </ul>
+        </article>
+
+        <article id="p2" class="mv-step scroll-mt-32 border-t border-slate-200 pt-10 mt-10">
+          <p class="text-sm text-slate-500">שלב 02</p>
+          <h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">איסוף חומרים</h3>
+
+          <p class="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
+            אוספים את המינימום הנכון כדי לשמור על קו נקי כמו ה-HERO — בלי להעמיס.
+          </p>
+
+          <ul class="mt-6 space-y-3 text-base text-slate-700">
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>לוגו / צבעים / השראה (אם יש)</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>טקסטים בסיסיים (או ניסוח יחד)</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>תמונות/דוגמאות — אם קיימות</li>
+          </ul>
+        </article>
+
+        <article id="p3" class="mv-step scroll-mt-32 border-t border-slate-200 pt-10 mt-10">
+          <p class="text-sm text-slate-500">שלב 03</p>
+          <h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">בנייה (Mobile-first)</h3>
+
+          <p class="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
+            קודם מובייל — ואז דסקטופ. ככה המסר, הקריאות והמהירות מנצחים.
+          </p>
+
+          <ul class="mt-6 space-y-3 text-base text-slate-700">
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>טיפוגרפיה + היררכיה נקייה</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>תשתית SEO (מטא/סקימה/סייטמאפ)</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>CTA וחיבורי לידים</li>
+          </ul>
+        </article>
+
+        <article id="p4" class="mv-step scroll-mt-32 border-t border-slate-200 pt-10 mt-10">
+          <p class="text-sm text-slate-500">שלב 04</p>
+          <h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">בדיקות ועלייה לאוויר</h3>
+
+          <p class="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
+            עוברים על הכל, עושים תיקוני דיוק, ואז משיקים מסודר.
+          </p>
+
+          <ul class="mt-6 space-y-3 text-base text-slate-700">
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>בדיקות מובייל/טאבלט/דסקטופ</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>חיבור טפסים/WhatsApp/מדידה בסיסית</li>
+            <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-slate-900"></span>השקה + תיקוני “אחרי עלייה” קטנים</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+
+<style>
+  /* active state (minimal) */
+  .mv-proc-link:hover { background: rgba(15, 23, 42, 0.02); }
+  .mv-proc-link.is-active { background: rgba(15, 23, 42, 0.04); }
+  .mv-proc-link.is-active .mv-dot { background: rgb(15, 23, 42); }
+
+  /* reveal animation — progressive enhancement (only if JS adds .mv-io) */
+  html.mv-io #process .mv-step { opacity: 0; transform: translateY(10px); }
+  html.mv-io #process .mv-step.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+
+/* DESKTOP (>=1024): center index text so it doesn't look cut */
+@media (min-width: 1024px){
+  /* center the whole link content */
+  #process .mv-proc-link{
+    text-align: center;
+    padding-right: 3.5rem; /* keep space for line + dot */
+  }
+
+  /* center the row that contains 01 + title */
+  #process .mv-proc-link > div{
+    justify-content: center !important;
+    gap: .75rem;
+  }
+
+  /* make title centered and not collide with the timeline rail */
+  #process .mv-proc-link > div > span:last-child{
+    display: block;
+    margin: 0 auto;
+    max-width: 18rem;
+    text-align: center;
+    line-height: 1.25;
+  }
+}
+
+
+  /* mobile/tablet (<=1023): hide index, show vertical timeline on content */
+@media (max-width: 1023px){
+  /* hide the entire index */
+  #process aside{ display:none !important; }
+
+  /* rail config (RTL = right side) */
+  #process .mv-steps{
+    --mv-pad: 4.25rem;  /* חייב להתאים ל-padding-right שלך */
+    --mv-rail-x: 18px;  /* מיקום הקו מהקצה הימני של mv-steps */
+    --mv-rail-w: 3px;   /* עובי הקו */
+    --mv-dot: 12px;     /* גודל נקודה */
+
+    position: relative;
+    padding-right: var(--mv-pad);
+  }
+
+  /* vertical rail */
+  #process .mv-steps::before{
+    content:"";
+    position:absolute;
+    right: var(--mv-rail-x);
+    top:0;
+    bottom:0;
+    width: var(--mv-rail-w);
+    background: rgba(148,163,184,0.95);
+    border-radius: 9999px;
+  }
+
+  /* dots per step */
+  #process .mv-step{
+    position: relative;
+  }
+
+  #process .mv-step::before{
+    content:"";
+    position:absolute;
+    top: 2.15rem;
+    width: var(--mv-dot);
+    height: var(--mv-dot);
+    border-radius: 9999px;
+
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    background: rgb(203,213,225);
+
+    /* קיבוע אמיתי: מפצים על padding-right של mv-steps
+       4.5px = (12px - 3px)/2 כדי שמרכז הנקודה יישב על מרכז הקו */
+    right: calc(var(--mv-rail-x) - var(--mv-pad) - 4.5px);
+
+    pointer-events: none;
+  }
+
+  /* highlight current step dot */
+  #process .mv-step.is-active::before{
+    background: rgb(15,23,42);
+  }
+}
+
+.mockup-frame {
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-site {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+</style>
+
+
+  <script>
+(function () {
+  var root = document.getElementById('process');
+  if (!root) return;
+
+  var links = Array.prototype.slice.call(root.querySelectorAll('.mv-proc-link'));
+  var steps = Array.prototype.slice.call(root.querySelectorAll('.mv-step'));
+
+  // אם אין steps או אין תמיכה ב-IntersectionObserver — לא מפעילים mv-io כדי לא להעלים תוכן
+  if (!steps.length || !('IntersectionObserver' in window)) return;
+
+  // enable progressive animation styles (רק אחרי שיש תמיכה)
+  document.documentElement.classList.add('mv-io');
+
+  var byId = {};
+  links.forEach(function (a) {
+    var id = (a.getAttribute('href') || '').replace('#', '');
+    byId[id] = a;
+  });
+
+  var stepById = {};
+  steps.forEach(function (step) {
+    if (step.id) stepById[step.id] = step;
+  });
+
+  function setActive(id) {
+    // 1) highlight index links (desktop)
+    links.forEach(function (a) {
+      a.classList.remove('is-active');
+      a.removeAttribute('aria-current');
+    });
+    if (byId[id]) {
+      byId[id].classList.add('is-active');
+      byId[id].setAttribute('aria-current', 'step');
+    }
+
+    // 2) highlight the actual step (mobile timeline dots)
+    steps.forEach(function (s) { s.classList.remove('is-active'); });
+    if (stepById[id]) stepById[id].classList.add('is-active');
+  }
+
+  // Initial active: hash or first
+  setActive((location.hash || '#p1').replace('#', ''));
+
+  // 1) Reveal once per step (no repeat when scrolling back)
+  var revealIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        revealIO.unobserve(entry.target);
+      }
+    });
+  }, { root: null, threshold: 0.18, rootMargin: "0px 0px -10% 0px" });
+
+  steps.forEach(function (step) { revealIO.observe(step); });
+
+  // 2) ScrollSpy: pick the step that intersects the "middle band" of viewport
+  var current = null;
+  var spyIO = new IntersectionObserver(function (entries) {
+    var best = null;
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
+    });
+    if (best && best.target && best.target.id && best.target.id !== current) {
+      current = best.target.id;
+      setActive(current);
+    }
+  }, {
+    root: null,
+    threshold: [0.15, 0.25, 0.35, 0.45, 0.55, 0.65],
+    rootMargin: "-35% 0px -50% 0px"
+  });
+
+  steps.forEach(function (step) { spyIO.observe(step); });
+})();
+
+  </script>
+</section>
+
+
+<section id="project-scroll" class="relative overflow-hidden py-20 bg-white">
+    <!-- VIGNETTE (Level 3) -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-white"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_74%,rgba(2,6,23,0.06)_100%)]"></div>
+    <div class="absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-slate-950/[0.15] to-transparent"></div>
+    <div class="absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-slate-950/[0.15] to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white via-white/95 to-transparent"></div>
+
+  </div>
+
+
+    <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 text-center">
+
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">הצצה לפרויקט אמיתי</h2>
+    <p class="text-slate-600 max-w-2xl mx-auto mb-10">גלול/י ותראה את האתר ממש בתוך המסך — בלי ללחוץ.</p>
+
+    <div class="mockup-frame mx-auto rounded-[2rem] shadow-soft overflow-hidden w-full max-w-[360px] h-[80vh] sm:h-[600px] relative">
+      <div class="scrolling-site absolute top-0 left-0 w-full">
+<img
+  src="assets/animations/fullsite_nitzav_project.png"
+  alt="צילום מסך ארוך של אתר"
+  class="w-full block"
+  loading="lazy"
+  decoding="async"
+/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+     <!-- PORTFOLIO (2 projects placeholders) -->
+<section id="portfolio" class="bg-white py-10 sm:py-14">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 space-y-40">
+
+    <!-- פרויקט 1: בבנייה -->
+    <div class="space-y-10">
+      <div class="w-full h-[400px] flex items-center justify-center bg-slate-100 rounded-3xl shadow-inner relative">
+        <div class="text-center">
+          <div class="text-5xl mb-4 text-yellow-400">🚧</div>
+          <p class="text-slate-500 text-lg">פרויקט בבנייה</p>
+        </div>
+      </div>
+      <div class="max-w-3xl mx-auto text-center space-y-3">
+        <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">עסק כלשהו</h3>
+        <p class="text-slate-600 text-lg">דף נחיתה / מיתוג / אתר</p>
+        <blockquote class="text-slate-400 italic text-base">“חוות דעת תופיע כאן.”</blockquote>
+      </div>
+    </div>
+
+    <!-- פרויקט 2: בקרוב -->
+    <div class="space-y-10">
+      <div class="w-full h-[400px] flex items-center justify-center bg-slate-100 rounded-3xl shadow-inner relative">
+        <div class="text-center">
+          <div class="text-5xl mb-4 text-indigo-400">🛠️</div>
+          <p class="text-slate-500 text-lg">עובדים על זה</p>
+        </div>
+      </div>
+      <div class="max-w-3xl mx-auto text-center space-y-3">
+        <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">פרויקט חדש</h3>
+        <p class="text-slate-600 text-lg">שירות כלשהו / ממשק / חנות</p>
+        <blockquote class="text-slate-400 italic text-base">“חוות דעת תופיע כאן.”</blockquote>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<section id="pricing" class="bg-white py-28 sm:py-36">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">מחירון כללי</h2>
+    <p class="text-slate-600 text-lg mb-16">תמחור שקוף וגמיש לפי הצרכים שלך — מתחילים פשוט, מתקדמים יחד.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-start">
+      
+      <!-- בסיסי -->
+      <div class="rounded-3xl bg-white p-8 shadow-lg flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">בסיסי</h3>
+          <p class="text-slate-600 mb-6">דף נחיתה חד־עמודי ממוקד — להתחלה מדויקת.</p>
+        </div>
+        <div class="mt-auto">
+          <p class="text-slate-900 font-bold text-lg">החל מ-₪2,500</p>
+          <a href="pricing.html" class="inline-block mt-3 text-sm font-semibold text-indigo-600 hover:underline">לפרטים מלאים →</a>
+        </div>
+      </div>
+
+      <!-- סטנדרט -->
+      <div class="rounded-3xl bg-white p-8 shadow-lg flex flex-col justify-between border border-indigo-200">
+        <div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">סטנדרט</h3>
+          <p class="text-slate-600 mb-6">אתר תדמית מלא עם כל מה שצריך — ולא טיפה יותר.</p>
+        </div>
+        <div class="mt-auto">
+          <p class="text-slate-900 font-bold text-lg">החל מ־₪3,000</p>
+          <a href="pricing.html" class="inline-block mt-3 text-sm font-semibold text-indigo-600 hover:underline">לפרטים מלאים →</a>
+        </div>
+      </div>
+
+      <!-- מתקדם -->
+      <div class="rounded-3xl bg-white p-8 shadow-lg flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">מתקדם</h3>
+          <p class="text-slate-600 mb-6">מערכת תוכן, חיבורי CRM, אופטימיזציה מלאה — לעסקים שרצים.</p>
+        </div>
+        <div class="mt-auto">
+          <p class="text-slate-900 font-bold text-lg">החל מ־₪5,000</p>
+          <a href="pricing.html" class="inline-block mt-3 text-sm font-semibold text-indigo-600 hover:underline">לפרטים מלאים →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+      
+
+<!-- CONTACT -->
+<section id="contact" class="relative bg-white py-14 sm:py-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="rounded-[2rem] bg-white border border-slate-200 shadow-soft p-6 sm:p-10">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">יצירת קשר</h2>
+        <p class="mt-3 text-slate-700 leading-relaxed max-w-xl">
+          שלחו הודעה בוואטסאפ, התקשרו, או כתבו באימייל — ונחזור אליכם בהקדם.
+        </p>
+
+        <div class="mt-6 grid gap-3">
+          <!-- WhatsApp -->
+          <a
+            href="https://wa.me/972509969920"
+            class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+            aria-label="שליחת הודעת וואטסאפ"
+          >
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 11.5A8.5 8.5 0 1 1 8.1 3.4 8.5 8.5 0 0 1 20 11.5Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M7 19l.7-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9.3 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3 0 .5-.1.7l-.4.4c-.1.1-.1.3 0 .5.6 1.2 1.6 2.1 2.8 2.6.2.1.4.1.5 0l.5-.5c.2-.2.4-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6-.6.4-1.7.6-3.2 0-1.7-.7-3.8-2.5-4.9-4.8-1-2.1-.4-3.1 0-3.6Z" fill="currentColor" opacity=".9"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-bold">WhatsApp</p>
+                <p class="text-sm text-slate-600">שליחת הודעה מהירה</p>
               </div>
             </div>
+            <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+          </a>
 
-            <!-- Contact side card -->
-            <aside class="rounded-3xl bg-slate-50 border border-slate-200 p-6 shadow-softer">
-              <h3 class="text-lg font-bold">מה כדאי לשלוח לי?</h3>
-              <p class="mt-2 text-sm text-slate-700 leading-relaxed">
-                כדי שאחזיר תשובה מדויקת ומהירה, אפשר לצרף:
-              </p>
-              <ul class="mt-4 space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
-                  תחום השירות/העסק שלך
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
-                  מטרת האתר (לידים / תדמית / פורטפוליו)
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
-                  מתי הכי טוב לך שאחזור אליך
-                </li>
-                
-              </ul>
-
-              
+          <!-- Phone -->
+          <a
+            href="tel:+972509969920"
+            class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+            aria-label="שיחת טלפון"
+          >
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7.5 3h2c.4 0 .8.3.9.7l.7 2.8c.1.4 0 .8-.3 1.1l-1 1a14 14 0 0 0 6 6l1-1c.3-.3.7-.4 1.1-.3l2.8.7c.4.1.7.5.7.9v2c0 .5-.4 1-1 1C10 20.8 3.2 14 3 4c0-.6.5-1 1-1h3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-bold">טלפון</p>
+                <p class="text-sm text-slate-600">+972-50-996-9920</p>
               </div>
-            </aside>
-          </div>
+            </div>
+            <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:morvaneweb@gmail.com"
+            class="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white shadow-softer px-5 py-4 hover:shadow-xl transition"
+            aria-label="שליחת אימייל"
+          >
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M6 8l6 5 6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-bold">אימייל</p>
+                <p class="text-sm text-slate-600">morvaneweb@gmail.com</p>
+              </div>
+            </div>
+            <span class="text-sm font-semibold text-slate-900 group-hover:translate-x-[-2px] transition">←</span>
+          </a>
         </div>
-      </section>
+      </div>
+
+      <!-- Contact side card -->
+      <aside class="rounded-3xl bg-white border border-slate-200 p-6 shadow-softer">
+        <h3 class="text-lg font-bold">מה כדאי לשלוח לי?</h3>
+        <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+          כדי שאחזיר תשובה מדויקת ומהירה, אפשר לצרף:
+        </p>
+        <ul class="mt-4 space-y-2 text-sm text-slate-700">
+          <li class="flex items-start gap-2">
+            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+            תחום השירות/העסק שלך
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+            מטרת האתר (לידים / תדמית / פורטפוליו)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-slate-900"></span>
+            מתי הכי טוב לך שאחזור אליך
+          </li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
     </main>
 
     <!-- Footer -->
@@ -856,6 +1231,131 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById("mvMenuBtn");
+    var menu = document.getElementById("mvMenu");
+    var closeBtn = document.getElementById("mvMenuClose");
+    if (!btn || !menu || !closeBtn) return;
+
+   function openMenu() {
+  menu.classList.remove("hidden");
+  btn.setAttribute("aria-expanded", "true");
+  document.documentElement.classList.add("overflow-hidden");
+  document.body.classList.add("overflow-hidden");
+    closeBtn.focus();
+
+}
+
+function closeMenu() {
+  menu.classList.add("hidden");
+  btn.setAttribute("aria-expanded", "false");
+  document.documentElement.classList.remove("overflow-hidden");
+  document.body.classList.remove("overflow-hidden");
+  btn.focus();
+}
+var backdrop = document.getElementById("mvMenuBackdrop");
+
+
+
+    btn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+
+
+    // close on ESC
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !menu.classList.contains("hidden")) closeMenu();
+
+    });
+
+    // close when clicking any anchor inside the menu
+    menu.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+  })();
+</script>
+
+
+<script>
+ (function(){
+  var el = document.getElementById("logo-animation");
+  if (!el || !window.lottie) return;
+
+  lottie.loadAnimation({
+    container: el,
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "assets/animations/logo.json"
+  });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  (function () {
+    var section = document.querySelector("#project-scroll");
+    if (!section) return;
+
+    // אם GSAP לא נטען מכל סיבה - לא לשבור את האתר
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    ScrollTrigger.matchMedia({
+      "(min-width: 641px)": function () {
+        gsap.to(".scrolling-site", {
+          y: "-80%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#project-scroll",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        gsap.to(".scrolling-site img", {
+          scale: 1.3,
+          scrollTrigger: {
+            trigger: "#project-scroll",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      },
+
+      "(max-width: 640px)": function () {
+        gsap.to(".scrolling-site", {
+          y: "-60%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#project-scroll",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        gsap.to(".scrolling-site img", {
+          scale: 1.1,
+          scrollTrigger: {
+            trigger: "#project-scroll",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      }
+    });
+  })();
+
+
+</script>
 
 
   </body>
